@@ -91,14 +91,75 @@ evolveUntilAttractor <- function(net, attractors, state){
 
 
 ATM <- computeATM("test/self_loop_bn_1_BoolNet.bn")
-ATM[ATM < 0.8] <- 0
-adjMtrx <- ATM
-adjMtrx[adjMtrx != 0] <- 1
-print(adjMtrx)
 print(ATM)
 
-ATMgraph <- graph_from_adjacency_matrix(adjMtrx, mode="directed")
-print(ATMgraph)
-scc <- clusters(ATMgraph, mode="strong")
+computeTES <- function(ATM){
+    thresholds <- unique(ATM)
+    thresholds <- c(0, thresholds)
+    print(thresholds)
+    tes_i <- 1
+    
+    for (thrs in thresholds){
+        tes_list <- list()
+        
+        ATM[ATM <= thrs] <- 0
+        adjMtrx <- ATM
+        adjMtrx[adjMtrx != 0] <- 1
+        #print(ATM)
+        #print(adjMtrx)
+        #adjMtrx <- matrix( rep( 0, len=25), nrow = 5)
+        #adjMtrx[1,1] <- 1
+        #adjMtrx[2,2] <- 1
+        #adjMtrx[2,5] <- 1
+        #adjMtrx[1,2] <- 1
+        #adjMtrx[2,1] <- 1
+        #adjMtrx[3,2] <- 1
+        #adjMtrx[4,3] <- 1
+        #rownames(adjMtrx) <- c("A1","A2","A3","A4","A5")
+        #colnames(adjMtrx) <- c("A1","A2","A3","A4","A5")
 
-print(scc)
+        ATMgraph <- graph_from_adjacency_matrix(adjMtrx, mode="directed")
+        #print(ATMgraph)
+        scc <- clusters(ATMgraph, mode="strong")
+        plot(ATMgraph)
+
+
+        scc_list <- list()
+        i <- 1
+        scc_unique_id <- unique(scc$membership)
+        for (id in scc_unique_id){
+            scc_list[[i]] <- names(which(scc$membership==id)) #prendo i nomi di tutti gli elm di quella scc
+            i <- i+1
+        }
+    
+        tes<- list()
+        j <- 1
+        for(scc in scc_list){
+            isTES <- TRUE
+            for(elm in scc){
+                #print(scc)
+                out_arcs <- names(which(adjMtrx[elm,] > 0))
+                if (any(!(out_arcs %in% scc))){
+                    isTES <- FALSE
+                    break
+                }
+            }
+            if (isTES){
+                tes[[j]] <- scc
+                j <- j + 1
+            }
+        }
+        print("tes")
+        print(tes)
+        print("FINEtes")
+        
+        tes_list[[tes_i]] <- tes
+        tes_i <- tes_i + 1
+    }
+    print("tes_list")
+    
+    print(tes_list)
+    return (tes_list)
+}
+
+computeTES(ATM)
