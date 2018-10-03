@@ -90,17 +90,15 @@ evolveUntilAttractor <- function(net, attractors, state){
 }
 
 
-ATM <- computeATM("test/self_loop_bn_1_BoolNet.bn")
-print(ATM)
 
-computeTES <- function(ATM){
+computeTESs <- function(ATM){
     thresholds <- unique(ATM)
     thresholds <- c(0, thresholds)
-    print(thresholds)
     tes_i <- 1
+    tes_list <- list()
+    
     
     for (thrs in thresholds){
-        tes_list <- list()
         
         ATM[ATM <= thrs] <- 0
         adjMtrx <- ATM
@@ -121,7 +119,7 @@ computeTES <- function(ATM){
         ATMgraph <- graph_from_adjacency_matrix(adjMtrx, mode="directed")
         #print(ATMgraph)
         scc <- clusters(ATMgraph, mode="strong")
-        plot(ATMgraph)
+        #plot(ATMgraph)
 
 
         scc_list <- list()
@@ -145,21 +143,67 @@ computeTES <- function(ATM){
                 }
             }
             if (isTES){
-                tes[[j]] <- scc
+                tes[[j]] <- scc                
                 j <- j + 1
             }
         }
-        print("tes")
-        print(tes)
-        print("FINEtes")
+        namesTESs <- (c(1:length(tes)) - 1 ) + tes_i
+        names(tes) <- sapply(namesTESs, paste0, "TES")
+        
         
         tes_list[[tes_i]] <- tes
         tes_i <- tes_i + 1
     }
-    print("tes_list")
     
-    print(tes_list)
-    return (tes_list)
+    namesLEVELTESs <- c(1:length(tes_list)) - 1
+    names(tes_list) <- sapply(namesLEVELTESs, paste0, "level")
+    a <- list("tes"=tes_list, "thresholds"=thresholds)
+    return (a)
 }
 
-computeTES(ATM)
+computeDiffTree <- function(TESs){
+    tesLvl <- TESs$tes
+    namesPerLevel <- function(level){ names(level)}
+    TESnames <- lapply(tesLvl, namesPerLevel)
+    TESnames <- unlist(TESnames)
+    
+    adjMatrixDiffTree <- matrix( rep( 0, len= length(TESnames)^2), nrow = length(TESnames))
+    rownames(adjMatrixDiffTree) <- TESnames
+    colnames(adjMatrixDiffTree) <- TESnames
+    
+    
+    #adjMatrixDiffTree[1,4] <- 1
+    #adjMatrixDiffTree[1,3] <- 1
+    print(tesLvl)
+    for(level in c(2:length(tesLvl))){
+        print(paste0("level  ", level -1 ))
+        #print(tesLvl[[level]])
+        for(tesName in names(tesLvl[[level]])){
+            #print(tesLvl[[level]][[tesName]])
+           
+        }
+        
+    }
+    
+    print(adjMatrixDiffTree)
+    
+    diffGraph <- graph_from_adjacency_matrix(adjMatrixDiffTree, mode="directed")
+    #plot(diffGraph, layout = layout.reingold.tilford(diffGraph, root=names(tesLvl[[1]])))
+    
+    
+    l <- layout_with_sugiyama(diffGraph)
+    plot(l$extd_graph, 
+         vertex.shape="circle", 
+         vertex.label=as_ids(V(diffGraph)),
+         edge.arrow.mode=2, 
+         edge.arrow.width=2, 
+         edge.arrow.size=0.1)
+    
+}
+
+ATM <- computeATM("test/self_loop_bn_1_BoolNet.bn")
+#print(ATM)
+TESs <- computeTESs(ATM)
+print(TESs$tes$"2level"$"4TES")
+computeDiffTree(TESs)
+
