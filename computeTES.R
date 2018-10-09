@@ -107,7 +107,7 @@ computeTESs <- function(ATM){
     }
     tes_i <- 1
     tes_list <- list()
-    
+    totalTES <- 0
     for (thrs in thresholds){
         
         ATM[ATM <= thrs] <- 0
@@ -157,11 +157,14 @@ computeTESs <- function(ATM){
                 j <- j + 1
             }
         }
-        namesTESs <- (c(1:length(tes)) - 1 ) + tes_i
+        
+        namesTESs <- (c(1:length(tes))) + totalTES
         names(tes) <- sapply("TES_", paste0,namesTESs)
         
         
         tes_list[[tes_i]] <- tes
+        totalTES <- totalTES + length(tes_list[[tes_i]])
+        
         tes_i <- tes_i + 1
     }
     
@@ -171,9 +174,65 @@ computeTESs <- function(ATM){
     return (a)
 }
 
-#computeDiffTree <- function(TESs){
-    
-    #}
+
+
+checkUpperlevels <- function(attrs, tesLvl, grandFatherLevel){
+    if (grandFatherLevel < 1){
+        return (-1)
+    } else {
+        for(grandFatherTESname in names(tesLvl[[grandFatherLevel]])){ #livello sopra per cercare i padri
+            if (attrs %in% tesLvl[[grandFatherLevel]][[grandFatherTESname]]){
+                return (grandFatherTESname)
+            }
+        }
+        checkUpperlevels(attrs,  tesLvl, grandFatherLevel - 1)
+    }
+}
+
+
+
+saveDotFileDifferentiationTree <- function(TESs, filename, saveImage=TRUE){
+    tesLvl <- TESs$tes
+    namesPerLevel <- function(level){ names(level)}
+    TESnames <- lapply(tesLvl, namesPerLevel)
+    TESnames <- unlist(TESnames)
+    sink(filename %+% ".gv")
+    gString <- "digraph diffTree {forcelabels=true;\n"
+    for(lvl in c(1:length(tesLvl))){#per ogni livello
+        #ADDING NODES
+        for(tesNAME in names(tesLvl[[lvl]])){#per ogni TES nel livello in esame
+            attractorsOfThisTES <- "attrs:" %+% paste(tesLvl[[lvl]][[tesNAME]],collapse=",")
+            gString <- gString %+% tesNAME %+%" [label = \"" %+% tesNAME %+% "\\n "%+% attractorsOfThisTES %+%"\"];\n"
+            found <- FALSE
+            if (lvl != 1) {#lvl 1=livello 0 dell'albero
+                for(fatherTESname in names(tesLvl[[lvl -1]])){ #livello sopra per cercare i padri
+                    if (tesLvl[[lvl]][[tesNAME]] %in% tesLvl[[lvl - 1]][[fatherTESname]]){
+                        gString <- gString %+% fatherTESname %+% " -> " %+% tesNAME %+% "[label="%+% TESs$thresholds[[lvl]] %+%"];\n"
+                        found <- TRUE
+                    }                
+                }
+                if (!found) {
+                    #check in upper levels
+                    grandFatherTesNAME <- checkUpperlevels(tesLvl[[lvl]][[tesNAME]], tesLvl, lvl - 2)
+                    if (grandFatherTesNAME != -1){
+                        gString <- gString %+% grandFatherTesNAME %+% " -> " %+% tesNAME %+% "[style=dashed, color=grey];\n"
+                    }
+                }
+            }
+        }
+        #ADDING RANKS
+        sameRANK <- sapply(names(tesLvl[[lvl]]),  paste0, ";")
+        sameRANK <- paste(sameRANK, collapse = "")
+        gString <- gString %+% "{ rank=same;" %+% sameRANK %+% " }\n"
+    }
+    sString <- gString %+% "}"
+    cat(sString)
+    sink()
+    if (saveImage){
+        dot(sString, file = filename %+% ".ps")
+    }
+}
+      
 
 #ATM <- computeATM("test/self_loop_bn_1_BoolNet.bn")
 ATM <- matrix( rep( 0, len=4^2), nrow = 4)
@@ -196,51 +255,9 @@ TESs <- computeTESs(ATM)
 
 print(TESs)
 print(TESs$tes$"level_2"$"TES_4")
-#computeDiffTree(TESs)
+saveDotFileDifferentiationTree(TESs, "diffeTREE")
 
 
-
-
-
-
-
-
-
-
-tesLvl <- TESs$tes
-namesPerLevel <- function(level){ names(level)}
-TESnames <- lapply(tesLvl, namesPerLevel)
-TESnames <- unlist(TESnames)
-sink("file.gv")
-gString <- "digraph diffTree {forcelabels=true;"
-#print(tesLvl)
-for(lvl in c(1:length(tesLvl))){#per ogni livello
-    #print(lvl) 
-    #ADDING NODES
-    for(tesNAME in names(tesLvl[[lvl]])){#per ogni TES nel livello in esame
-        attractorsOfThisTES <- "attrs:" %+% paste(tesLvl[[lvl]][[tesNAME]],collapse=",")
-        gString <- gString %+% tesNAME %+%" [label = \"" %+% tesNAME %+% "\\n "%+% attractorsOfThisTES %+%"\"];"
-        if (lvl != 1) {#lvl 1=livello 0 dell'albero
-            for(fatherTESname in names(tesLvl[[lvl -1]])){ #livello sopra per cercare i padri
-                #print("fatherTESname")
-                #print(tesLvl[[lvl]][[tesNAME]])
-                #print(tesLvl[[lvl - 1]][[fatherTESname]])
-                if (tesLvl[[lvl]][[tesNAME]] %in% tesLvl[[lvl - 1]][[fatherTESname]]){
-                    gString <- gString %+% fatherTESname %+% " -> " %+% tesNAME %+% "[label="%+% TESs$thresholds[[lvl]] %+%"];"
-                }
-                
-            }
-        }
-    }
-    #ADDING RANKS
-    sameRANK <- sapply(names(tesLvl[[lvl]]),  paste0, ";")
-    sameRANK <- paste(sameRANK, collapse = "")
-    gString <- gString %+% "{ rank=same;" %+% sameRANK %+% "}"
-}
-sString <- gString %+% "}"
-cat(sString)
-sink()
-print(sString)
-dot(sString, file = "myfile.ps")
+      
        
 
