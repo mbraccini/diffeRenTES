@@ -25,24 +25,25 @@ getMatricesAttractors <- function(attractors, numGens){
     }
     funForAMatrixDescribingTheAttractor <- function(attractorsMatrix,numBits){ apply(attractorsMatrix,2,intToBitVector, numBit=numBits)} #2 significa applicalo sulle colonne
     syncAttractors <- lapply(matrixAttractorList,funForAMatrixDescribingTheAttractor,numBits=numGens) 
-    #NOMI
+    #NAMES
     namesAttrs <- c(1:length(attractors$attractors))
     names(syncAttractors) <- sapply("a", paste0,namesAttrs )
     return (syncAttractors)
 }
 
 
-computeATM <- function(fileBN){
-    net <- loadNetwork(fileBN)
-    numGenes <- length(net$genes)
-    attractors <- getAttractors(net) 
+computeATM <- function(net, attractors){
+    #net <- loadNetwork(fileBN)
+    #numGenes <- length(net$genes)
+    #attractors <- getAttractors(net) 
+    initialAttractors <- attractors
+    numGenes <- length(attractors$stateInfo$genes)
     numAttractors <- length(attractors$attractors)
-    attractors <- getMatricesAttractors(attractors,numGenes)
     
+    attractors <- getMatricesAttractors(attractors,numGenes)
+    print(attractors)
     ATM <- matrix( rep( 0, len=numAttractors^2), nrow = numAttractors)
     #print(attractors[1][[1]][,1])
-    print(attractors)
-    #print(attractors$"2att")
     
     lost <- 0
     for(i in c(1:numAttractors)){
@@ -66,7 +67,12 @@ computeATM <- function(fileBN){
     
     ATM <- sweep(ATM, 1, rowSums(ATM), FUN="/") #normalization per row sums
     ATM <- round(ATM, 2)
-    return (ATM)
+    
+    attrsDecimal <- initialAttractors$attractors
+    names(attrsDecimal) <- names(attractors)
+    attrs <- list("decimal" = attrsDecimal, "binary"=attractors)
+    a <- list ("ATM" = ATM, "lostFLips" = lost, "attractors"= attrs)
+    return (a)
 }
 
 matchAgainstKnownAttractors <- function(state, attractors){
@@ -233,24 +239,29 @@ saveDotFileDifferentiationTree <- function(TESs, filename, saveImage=TRUE){
     }
 }
       
+fileBN <- "test/self_loop_bn_1_BoolNet.bn"
+net <- loadNetwork(fileBN)
+attractors <- getAttractors(net) 
 
-#ATM <- computeATM("test/self_loop_bn_1_BoolNet.bn")
-ATM <- matrix( rep( 0, len=4^2), nrow = 4)
-ATM[1,2] <- 0.32
-ATM[2,1] <- 0.22
-ATM[2,2] <- 0.44
+a <- computeATM(net, attractors)
+print(a)
+print(a$attractors$decimal$a2)
+print(a$attractors$binary$a2)
 
-ATM[3,4] <- 0.32
-ATM[4,3] <- 0.22
-ATM[4,4] <- 0.44
+ATM <- a$ATM
+#ATM <- matrix( rep( 0, len=4^2), nrow = 4)
+#ATM[1,2] <- 0.32
+#ATM[2,1] <- 0.22
+#ATM[2,2] <- 0.44
 
-
-rownames(ATM) <- c("c1","c2","c3","c4")
-colnames(ATM) <- c("c1","c2","c3","c4")
+#ATM[3,4] <- 0.32
+#ATM[4,3] <- 0.22
+#ATM[4,4] <- 0.44
+#rownames(ATM) <- c("c1","c2","c3","c4")
+#colnames(ATM) <- c("c1","c2","c3","c4")
 
 print(ATM)
 
-#print(ATM)
 TESs <- computeTESs(ATM)
 
 print(TESs)
