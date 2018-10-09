@@ -98,11 +98,15 @@ evolveUntilAttractor <- function(net, attractors, state){
 
 
 computeTESs <- function(ATM){
-    thresholds <- unique(ATM)
-    thresholds <- c(0, thresholds)
+    #thresholds <- unique(ATM)
+    thresholds <- unique(sort(c(ATM)))
+    if (0 %in% thresholds){
+        print("there is already a 0")
+    } else {
+        thresholds <- c(0, thresholds)
+    }
     tes_i <- 1
     tes_list <- list()
-    
     
     for (thrs in thresholds){
         
@@ -171,9 +175,25 @@ computeTESs <- function(ATM){
     
     #}
 
-ATM <- computeATM("test/self_loop_bn_1_BoolNet.bn")
+#ATM <- computeATM("test/self_loop_bn_1_BoolNet.bn")
+ATM <- matrix( rep( 0, len=4^2), nrow = 4)
+ATM[1,2] <- 0.32
+ATM[2,1] <- 0.22
+ATM[2,2] <- 0.44
+
+ATM[3,4] <- 0.32
+ATM[4,3] <- 0.22
+ATM[4,4] <- 0.44
+
+
+rownames(ATM) <- c("c1","c2","c3","c4")
+colnames(ATM) <- c("c1","c2","c3","c4")
+
+print(ATM)
+
 #print(ATM)
 TESs <- computeTESs(ATM)
+
 print(TESs)
 print(TESs$tes$"level_2"$"TES_4")
 #computeDiffTree(TESs)
@@ -191,13 +211,11 @@ tesLvl <- TESs$tes
 namesPerLevel <- function(level){ names(level)}
 TESnames <- lapply(tesLvl, namesPerLevel)
 TESnames <- unlist(TESnames)
-
-arrow <- "->"
+sink("file.gv")
 gString <- "digraph diffTree {forcelabels=true;"
-print(tesLvl)
-
+#print(tesLvl)
 for(lvl in c(1:length(tesLvl))){#per ogni livello
-    print(lvl) 
+    #print(lvl) 
     #ADDING NODES
     for(tesNAME in names(tesLvl[[lvl]])){#per ogni TES nel livello in esame
         attractorsOfThisTES <- "attrs:" %+% paste(tesLvl[[lvl]][[tesNAME]],collapse=",")
@@ -220,6 +238,8 @@ for(lvl in c(1:length(tesLvl))){#per ogni livello
     gString <- gString %+% "{ rank=same;" %+% sameRANK %+% "}"
 }
 sString <- gString %+% "}"
+cat(sString)
+sink()
 print(sString)
 dot(sString, file = "myfile.ps")
        
