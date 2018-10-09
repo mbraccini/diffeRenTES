@@ -32,15 +32,15 @@ getMatricesAttractors <- function(attractors, numGens){
 }
 
 
-computeATM <- function(net, attractors){
+computeATM <- function(net, syncAttractors){
     #net <- loadNetwork(fileBN)
     #numGenes <- length(net$genes)
     #attractors <- getAttractors(net) 
-    initialAttractors <- attractors
-    numGenes <- length(attractors$stateInfo$genes)
-    numAttractors <- length(attractors$attractors)
+    initialAttractors <- syncAttractors
+    numGenes <- length(syncAttractors$stateInfo$genes)
+    numAttractors <- length(syncAttractors$attractors)
     
-    attractors <- getMatricesAttractors(attractors,numGenes)
+    attractors <- getMatricesAttractors(syncAttractors,numGenes)
     print(attractors)
     ATM <- matrix( rep( 0, len=numAttractors^2), nrow = numAttractors)
     #print(attractors[1][[1]][,1])
@@ -241,6 +241,8 @@ saveDotFileDifferentiationTree <- function(TESs, filename, saveImage=TRUE){
       
 fileBN <- "test/self_loop_bn_1_BoolNet.bn"
 net <- loadNetwork(fileBN)
+net <- generateRandomNKNetwork(20, 2)
+
 attractors <- getAttractors(net) 
 
 a <- computeATM(net, attractors)
