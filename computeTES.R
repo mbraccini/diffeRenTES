@@ -1,8 +1,14 @@
 library(BoolNet)
 library(igraph)
+library(DOT)
 
 
 MAX_STEPS_TO_FIND_ATTRACTORS <- 1000
+
+
+#New string append operator utilizzabile "new" %+% " string" o `%++%`("pippo" ,"pluto")
+`%+%` <- function(a, b) paste0(a, b)
+`%++%` <- function(a, b) paste(a, b, sep=" ")
 
 #Function - from attractors and gene numbers retrieve a list of matrices with columns that are the states that compose the attractors of the net
 getMatricesAttractors <- function(attractors, numGens){
@@ -21,7 +27,7 @@ getMatricesAttractors <- function(attractors, numGens){
     syncAttractors <- lapply(matrixAttractorList,funForAMatrixDescribingTheAttractor,numBits=numGens) 
     #NOMI
     namesAttrs <- c(1:length(attractors$attractors))
-    names(syncAttractors) <- sapply(namesAttrs, paste0, "A")
+    names(syncAttractors) <- sapply("a", paste0,namesAttrs )
     return (syncAttractors)
 }
 
@@ -148,7 +154,7 @@ computeTESs <- function(ATM){
             }
         }
         namesTESs <- (c(1:length(tes)) - 1 ) + tes_i
-        names(tes) <- sapply(namesTESs, paste0, "TES")
+        names(tes) <- sapply("TES_", paste0,namesTESs)
         
         
         tes_list[[tes_i]] <- tes
@@ -156,54 +162,65 @@ computeTESs <- function(ATM){
     }
     
     namesLEVELTESs <- c(1:length(tes_list)) - 1
-    names(tes_list) <- sapply(namesLEVELTESs, paste0, "level")
+    names(tes_list) <- sapply("level_",  paste0, namesLEVELTESs)
     a <- list("tes"=tes_list, "thresholds"=thresholds)
     return (a)
 }
 
-computeDiffTree <- function(TESs){
-    tesLvl <- TESs$tes
-    namesPerLevel <- function(level){ names(level)}
-    TESnames <- lapply(tesLvl, namesPerLevel)
-    TESnames <- unlist(TESnames)
+#computeDiffTree <- function(TESs){
     
-    adjMatrixDiffTree <- matrix( rep( 0, len= length(TESnames)^2), nrow = length(TESnames))
-    rownames(adjMatrixDiffTree) <- TESnames
-    colnames(adjMatrixDiffTree) <- TESnames
-    
-    
-    #adjMatrixDiffTree[1,4] <- 1
-    #adjMatrixDiffTree[1,3] <- 1
-    print(tesLvl)
-    for(level in c(2:length(tesLvl))){
-        print(paste0("level  ", level -1 ))
-        #print(tesLvl[[level]])
-        for(tesName in names(tesLvl[[level]])){
-            #print(tesLvl[[level]][[tesName]])
-           
-        }
-        
-    }
-    
-    print(adjMatrixDiffTree)
-    
-    diffGraph <- graph_from_adjacency_matrix(adjMatrixDiffTree, mode="directed")
-    #plot(diffGraph, layout = layout.reingold.tilford(diffGraph, root=names(tesLvl[[1]])))
-    
-    
-    l <- layout_with_sugiyama(diffGraph)
-    plot(l$extd_graph, 
-         vertex.shape="circle", 
-         vertex.label=as_ids(V(diffGraph)),
-         edge.arrow.mode=2, 
-         edge.arrow.width=2, 
-         edge.arrow.size=0.1)
-    
-}
+    #}
 
 ATM <- computeATM("test/self_loop_bn_1_BoolNet.bn")
 #print(ATM)
 TESs <- computeTESs(ATM)
-print(TESs$tes$"2level"$"4TES")
-computeDiffTree(TESs)
+print(TESs)
+print(TESs$tes$"level_2"$"TES_4")
+#computeDiffTree(TESs)
+
+
+
+
+
+
+
+
+
+
+tesLvl <- TESs$tes
+namesPerLevel <- function(level){ names(level)}
+TESnames <- lapply(tesLvl, namesPerLevel)
+TESnames <- unlist(TESnames)
+
+arrow <- "->"
+gString <- "digraph diffTree {forcelabels=true;"
+print(tesLvl)
+
+for(lvl in c(1:length(tesLvl))){#per ogni livello
+    print(lvl) 
+    #ADDING NODES
+    for(tesNAME in names(tesLvl[[lvl]])){#per ogni TES nel livello in esame
+        attractorsOfThisTES <- "attrs:" %+% paste(tesLvl[[lvl]][[tesNAME]],collapse=",")
+        gString <- gString %+% tesNAME %+%" [label = \"" %+% tesNAME %+% "\\n "%+% attractorsOfThisTES %+%"\"];"
+        if (lvl != 1) {#lvl 1=livello 0 dell'albero
+            for(fatherTESname in names(tesLvl[[lvl -1]])){ #livello sopra per cercare i padri
+                #print("fatherTESname")
+                #print(tesLvl[[lvl]][[tesNAME]])
+                #print(tesLvl[[lvl - 1]][[fatherTESname]])
+                if (tesLvl[[lvl]][[tesNAME]] %in% tesLvl[[lvl - 1]][[fatherTESname]]){
+                    gString <- gString %+% fatherTESname %+% " -> " %+% tesNAME %+% "[label="%+% TESs$thresholds[[lvl]] %+%"];"
+                }
+                
+            }
+        }
+    }
+    #ADDING RANKS
+    sameRANK <- sapply(names(tesLvl[[lvl]]),  paste0, ";")
+    sameRANK <- paste(sameRANK, collapse = "")
+    gString <- gString %+% "{ rank=same;" %+% sameRANK %+% "}"
+}
+sString <- gString %+% "}"
+print(sString)
+dot(sString, file = "myfile.ps")
+       
 
