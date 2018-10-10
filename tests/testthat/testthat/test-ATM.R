@@ -1,8 +1,11 @@
-library(here)
-library(assertthat)
-source(here("computeTES.R"))
+#library(here)
+#library(assertthat)
+#source(here("computeTES.R"))
 
-test1 <- function(){
+
+context("ATM tests")
+
+test_that("ATM tests working", {
     ATM <- matrix( rep( 0, len=4^2), nrow = 4)
     ATM[1,2] <- 0.32
     ATM[2,1] <- 0.22
@@ -22,6 +25,4 @@ test1 <- function(){
     #check TES number for every level
     assert_that(is.character('a'))
     
-}
-
-test1()
+})
