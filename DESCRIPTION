@@ -8,7 +8,7 @@ Imports:
     BoolNet,
     igraph,
     DOT,
-    here.
+    here,
     assertthat
 Suggests:
     testthat,
