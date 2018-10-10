@@ -105,6 +105,8 @@ evolveUntilAttractor <- function(net, attractors, state){
 
 computeTESs <- function(ATM){
     #thresholds <- unique(ATM)
+    ATMstructure <- ATM
+    ATM <- ATM$ATM
     thresholds <- unique(sort(c(ATM)))
     if (0 %in% thresholds){
         print("there is already a 0")
@@ -176,7 +178,7 @@ computeTESs <- function(ATM){
     
     namesLEVELTESs <- c(1:length(tes_list)) - 1
     names(tes_list) <- sapply("level_",  paste0, namesLEVELTESs)
-    a <- list("tes"=tes_list, "thresholds"=thresholds)
+    a <- list("tes"=tes_list, "thresholds"=thresholds, "ATM"=ATMstructure)
     return (a)
 }
 
@@ -205,6 +207,18 @@ saveDotFileDifferentiationTree <- function(TESs, filename, saveImage=TRUE){
     sink(filename %+% ".gv")
     gString <- "digraph diffTree {forcelabels=true;\n"
     for(lvl in c(1:length(tesLvl))){#per ogni livello
+        if (lvl != 1) {#lvl 1=livello 0 dell'albero
+            #Check if this level is equal to the previous one
+            if (length(tesLvl[[lvl]]) == length(TESs$ATM$attractors$decimal)){ #if number of TES is the same of the number of attractors 
+                if(length(tesLvl[[lvl]]) == length(tesLvl[[lvl - 1]])){
+                    #same number of TES for this 2 adjacent levels
+                    #isOne <- function(x) x == 1
+                    #if (all(sapply(sapply(tesLvl[[lvl]],FUN=length),FUN=isOne)) && all(sapply(sapply(tesLvl[[lvl - 1]],FUN=length),FUN=isOne))){
+                        next
+                        #}
+                }
+            }
+        }
         #ADDING NODES
         for(tesNAME in names(tesLvl[[lvl]])){#per ogni TES nel livello in esame
             attractorsOfThisTES <- "attrs:" %+% paste(tesLvl[[lvl]][[tesNAME]],collapse=",")
@@ -235,22 +249,24 @@ saveDotFileDifferentiationTree <- function(TESs, filename, saveImage=TRUE){
     cat(sString)
     sink()
     if (saveImage){
-        dot(sString, file = filename %+% ".ps")
+        dot(sString, file = filename %+% ".svg")
     }
 }
       
-fileBN <- "test/self_loop_bn_1_BoolNet.bn"
+#fileBN <- "test/self_loop_bn_1_BoolNet.bn"
+fileBN <- "rete.bn"
+
 net <- loadNetwork(fileBN)
-net <- generateRandomNKNetwork(20, 2)
+#net <- generateRandomNKNetwork(20, 2)
+#saveNetwork(net,"rete.bn")
 
 attractors <- getAttractors(net) 
 
-a <- computeATM(net, attractors)
-print(a)
-print(a$attractors$decimal$a2)
-print(a$attractors$binary$a2)
+ATM <- computeATM(net, attractors)
+print(ATM)
+print(ATM$attractors$decimal$a2)
+print(ATM$attractors$binary$a2)
 
-ATM <- a$ATM
 #ATM <- matrix( rep( 0, len=4^2), nrow = 4)
 #ATM[1,2] <- 0.32
 #ATM[2,1] <- 0.22
@@ -262,13 +278,14 @@ ATM <- a$ATM
 #rownames(ATM) <- c("c1","c2","c3","c4")
 #colnames(ATM) <- c("c1","c2","c3","c4")
 
-print(ATM)
+print(ATM$ATM)
 
 TESs <- computeTESs(ATM)
 
 print(TESs)
+
 print(TESs$tes$"level_2"$"TES_4")
-saveDotFileDifferentiationTree(TESs, "diffeTREE")
+saveDotFileDifferentiationTree(TESs, "diffeTREE2")
 
 
       
