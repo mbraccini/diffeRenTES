@@ -1,4 +1,5 @@
 library(here)
+library(assertthat)
 source(here("computeTES.R"))
 
 test1 <- function(){
@@ -19,6 +20,8 @@ test1 <- function(){
     #check thresholds
     
     #check TES number for every level
+    assert_that(is.character(1))
+    
 }
 
 test1()

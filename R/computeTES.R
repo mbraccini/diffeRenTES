@@ -4,7 +4,6 @@ library(DOT)
 library(here)
 
 
-MAX_STEPS_TO_FIND_ATTRACTORS <- 1000
 
 
 #New string append operator utilizzabile "new" %+% " string" o `%++%`("pippo" ,"pluto")
@@ -33,7 +32,7 @@ getMatricesAttractors <- function(attractors, numGens){
 }
 
 
-computeATM <- function(net, syncAttractors){
+computeATM <- function(net, syncAttractors, MAX_STEPS_TO_FIND_ATTRACTORS = 1000){
     #net <- loadNetwork(fileBN)
     #numGenes <- length(net$genes)
     #attractors <- getAttractors(net) 
@@ -53,7 +52,7 @@ computeATM <- function(net, syncAttractors){
             for (gene in c(1:numGenes)){
                 flipped <- att[,j]
                 flipped[gene] <- xor(att[,j][gene], 1)
-                attFoundIndex <- evolveUntilAttractor(net, attractors, flipped)
+                attFoundIndex <- evolveUntilAttractor(net, attractors, flipped, MAX_STEPS_TO_FIND_ATTRACTORS)
                 if (attFoundIndex != -1){
                     ATM[i,attFoundIndex] <- ATM[i,attFoundIndex] + 1
                 } else {
@@ -90,7 +89,7 @@ matchAgainstKnownAttractors <- function(state, attractors){
 }
 
 #Returns index of attractors found or -1 if too much time needed
-evolveUntilAttractor <- function(net, attractors, state){
+evolveUntilAttractor <- function(net, attractors, state, MAX_STEPS_TO_FIND_ATTRACTORS){
     for (i in c(1:MAX_STEPS_TO_FIND_ATTRACTORS)){
         idx <- matchAgainstKnownAttractors(state,attractors)
         if(idx != -1){
