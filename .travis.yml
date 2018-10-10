@@ -4,12 +4,12 @@ cache: packages
 
 warnings_are_errors: true
 
-#install:
-    #- R -e "install.packages(repos='http://cran.us.r-project.org','BoolNet')"
-    #- R -e "install.packages(repos='http://cran.us.r-project.org','igraph')"
-    #- R -e "install.packages(repos='http://cran.us.r-project.org','DOT')"
-    #- R -e "install.packages(repos='http://cran.us.r-project.org','here')"
-    #- R -e "install.packages(repos='http://cran.us.r-project.org','assertthat')"
+install:
+    - R -e "install.packages(repos='http://cran.us.r-project.org','BoolNet')"
+    - R -e "install.packages(repos='http://cran.us.r-project.org','igraph')"
+    - R -e "install.packages(repos='http://cran.us.r-project.org','DOT')"
+    - R -e "install.packages(repos='http://cran.us.r-project.org','here')"
+    - R -e "install.packages(repos='http://cran.us.r-project.org','assertthat')"
     
 script:
     - R CMD build .
