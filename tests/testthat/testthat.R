@@ -1,2 +1,2 @@
 library(testthat)
-test_check("R-TES")
+test_check("R.TES")
