@@ -1,6 +1,7 @@
 library(BoolNet)
 library(igraph)
 library(DOT)
+library(here)
 
 
 MAX_STEPS_TO_FIND_ATTRACTORS <- 1000

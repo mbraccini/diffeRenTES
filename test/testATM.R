@@ -1,4 +1,5 @@
-source("../computeTES.R")
+library(here)
+source(here("computeTES.R"))
 
 test1 <- function(){
     ATM <- matrix( rep( 0, len=4^2), nrow = 4)
