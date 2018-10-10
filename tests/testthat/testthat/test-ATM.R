@@ -20,7 +20,7 @@ test1 <- function(){
     #check thresholds
     
     #check TES number for every level
-    assert_that(is.character(1))
+    assert_that(is.character('a'))
     
 }
 

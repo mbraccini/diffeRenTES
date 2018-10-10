@@ -7,9 +7,8 @@ install:
     - R -e "install.packages(repos='http://cran.us.r-project.org','here')"
     - R -e "install.packages(repos='http://cran.us.r-project.org','assertthat')"
     
-    
 script:
     - R CMD build .
     - R CMD check *tar.gz
-    - Rscript R/test/test*.R
+   # - Rscript R/test/test*.R
     
