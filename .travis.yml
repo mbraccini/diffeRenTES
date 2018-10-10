@@ -1,5 +1,9 @@
 language: r
+sudo: false
 cache: packages
+
+warnings_are_errors: true
+
 install:
     - R -e "install.packages(repos='http://cran.us.r-project.org','BoolNet')"
     - R -e "install.packages(repos='http://cran.us.r-project.org','igraph')"

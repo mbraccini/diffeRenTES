@@ -1,7 +1,7 @@
-library(BoolNet)
-library(igraph)
-library(DOT)
-library(here)
+#library(BoolNet)
+#library(igraph)
+#library(DOT)
+#library(here)
 
 
 
