@@ -178,7 +178,7 @@ computeTESs <- function(ATM){
     
     namesLEVELTESs <- c(1:length(tes_list)) - 1
     names(tes_list) <- sapply("level_",  paste0, namesLEVELTESs)
-    a <- list("tes"=tes_list, "thresholds"=thresholds, "ATM"=ATMstructure)
+    a <- list("TES"=tes_list, "thresholds"=thresholds, "ATM"=ATMstructure)
     return (a)
 }
 
@@ -200,7 +200,7 @@ checkUpperlevels <- function(attrs, tesLvl, grandFatherLevel){
 
 
 saveDotFileDifferentiationTree <- function(TESs, filename, saveImage=TRUE){
-    tesLvl <- TESs$tes
+    tesLvl <- TESs$TES
     namesPerLevel <- function(level){ names(level)}
     TESnames <- lapply(tesLvl, namesPerLevel)
     TESnames <- unlist(TESnames)
@@ -252,41 +252,34 @@ saveDotFileDifferentiationTree <- function(TESs, filename, saveImage=TRUE){
         dot(sString, file = filename %+% ".svg")
     }
 }
-      
-#fileBN <- "test/self_loop_bn_1_BoolNet.bn"
-fileBN <- "rete.bn"
+ 
+ 
+main <- function(){
+    #fileBN <- "test/self_loop_bn_1_BoolNet.bn"
+    fileBN <- "rete.bn"
 
-net <- loadNetwork(fileBN)
-#net <- generateRandomNKNetwork(20, 2)
-#saveNetwork(net,"rete.bn")
+    net <- loadNetwork(fileBN)
+    #net <- generateRandomNKNetwork(20, 2)
+    #saveNetwork(net,"rete.bn")
 
-attractors <- getAttractors(net) 
+    attractors <- getAttractors(net) 
 
-ATM <- computeATM(net, attractors)
-print(ATM)
-print(ATM$attractors$decimal$a2)
-print(ATM$attractors$binary$a2)
+    ATM <- computeATM(net, attractors)
+    print(ATM)
+    print(ATM$attractors$decimal$a2)
+    print(ATM$attractors$binary$a2)
 
-#ATM <- matrix( rep( 0, len=4^2), nrow = 4)
-#ATM[1,2] <- 0.32
-#ATM[2,1] <- 0.22
-#ATM[2,2] <- 0.44
 
-#ATM[3,4] <- 0.32
-#ATM[4,3] <- 0.22
-#ATM[4,4] <- 0.44
-#rownames(ATM) <- c("c1","c2","c3","c4")
-#colnames(ATM) <- c("c1","c2","c3","c4")
 
-print(ATM$ATM)
+    print(ATM$ATM)
 
-TESs <- computeTESs(ATM)
+    TESs <- computeTESs(ATM)
 
-print(TESs)
+    print(TESs)
 
-print(TESs$tes$"level_2"$"TES_4")
-saveDotFileDifferentiationTree(TESs, "diffeTREE2")
-
+    print(TESs$TES$"level_2"$"TES_4")
+    saveDotFileDifferentiationTree(TESs, "diffeTREE2")
+}
 
       
        
