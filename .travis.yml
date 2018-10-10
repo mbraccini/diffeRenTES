@@ -1,4 +1,4 @@
 language: r
 cache: packages
 script:
-    - Rscript test/test*.R
+    - Rscript R/test/test*.R
