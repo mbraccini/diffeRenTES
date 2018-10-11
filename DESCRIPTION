@@ -16,7 +16,7 @@ Suggests:
     testthat,
     devtools,
     roxygen2
-Remotes: haghish/DOT, jeroen/v8
+Remotes: haghish/DOT, jeroen/v8, klutometis/roxygen, r-lib/testthat
 License: GPL-3
 Encoding: UTF-8
 LazyData: true
