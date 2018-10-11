@@ -1,9 +1,3 @@
-#library(BoolNet)
-#library(igraph)
-#library(DOT)
-#library(here)
-
-
 
 
 #New string append operator utilizzabile "new" %+% " string" o `%++%`("pippo" ,"pluto")
@@ -32,6 +26,23 @@ getMatricesAttractors <- function(attractors, numGens){
 }
 
 
+#' Compute ATM
+#'
+#' Creates a structure for constructing a sort of landscape
+#'
+#' @param net Boolean network loaded with loadNetwork() of BoolNet package
+#' @param syncAttractors synchronous attractors of the network
+#' @param MAX_STEPS_TO_FIND_ATTRACTORS number of steps after that the dynamics after the perturbation gives up
+#'
+#' @return List of ATM, lostFlips, and attractors in both decimal and binary format
+#'
+#' @examples
+#' library(BoolNet)
+#' net <- generateRandomNKNetwork(10, 2)
+#' attractors <- getAttractors(net) 
+#' computeATM(net, attractors)
+#'
+#' @export
 computeATM <- function(net, syncAttractors, MAX_STEPS_TO_FIND_ATTRACTORS = 1000){
     #net <- loadNetwork(fileBN)
     #numGenes <- length(net$genes)
@@ -102,7 +113,24 @@ evolveUntilAttractor <- function(net, attractors, state, MAX_STEPS_TO_FIND_ATTRA
 }
 
 
-
+#' Compute TES
+#'
+#' Creates a structure for constructing the TES as described in  A Dynamical Model of Genetic Networks for Cell Differentiation 
+#'Villani M, Barbieri A, Serra R (2011) A Dynamical Model of Genetic Networks for Cell Differentiation. PLOS ONE 6(3): e17703. https://doi.org/10.1371/journal.pone.0017703
+#'
+#' @param ATM ATM structured as returned from the computeATM() method
+#'
+#' @return List of TES, and ATM structure
+#'
+#' @examples
+#' library(BoolNet)
+#' library(igraph)
+#' net <- generateRandomNKNetwork(10, 2)
+#' attractors <- getAttractors(net) 
+#' ATM <- computeATM(net, attractors)
+#' computeTESs(ATM) 
+#'
+#' @export
 computeTESs <- function(ATM){
     #thresholds <- unique(ATM)
     ATMstructure <- ATM
@@ -198,7 +226,28 @@ checkUpperlevels <- function(attrs, tesLvl, grandFatherLevel){
 }
 
 
-
+#' Create TES based differentiation tree 
+#'
+#' Creates representation of a differentiation tree
+#'
+#' @param TESs TES structure as returned from the computeTES() method
+#' @param filename desired output filename
+#' @param saveImage if you want already the .svg image of the tree
+#'
+#' @return None
+#'
+#' @examples
+#' library(BoolNet)
+#' library(igraph)
+#' library(DOT)
+#'
+#' net <- generateRandomNKNetwork(10, 2)
+#' attractors <- getAttractors(net) 
+#' ATM <- computeATM(net, attractors)
+#' TESs <- computeTESs(ATM) 
+#' saveDotFileDifferentiationTree(TESs, "exampleTree")
+#'
+#' @export
 saveDotFileDifferentiationTree <- function(TESs, filename, saveImage=TRUE){
     tesLvl <- TESs$TES
     namesPerLevel <- function(level){ names(level)}

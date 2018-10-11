@@ -1,7 +1,9 @@
-Package: R.TES
-Title: What the Package Does (one line, title case)
-Version: 0.0.0.9000
-Authors@R: person("First", "Last", email = "first.last@example.com", role = c("aut", "cre"))
+Package: diffeRenTES
+Version: 0.1
+Date: 2018-10-11
+Title: Landscape and TES computation of BN networks
+Author: Michele Braccini <m.braccini@unibo.it>
+Maintainer: Michele Braccini <m.braccini@unibo.it>
 Description: What the package does (one paragraph).
 Depends: R (>= 3.3.1)
 Imports:
@@ -15,6 +17,7 @@ Suggests:
     devtools,
     roxygen2
 Remotes: haghish/DOT, jeroen/v8
-License: What license is it under?
+License: GPL-3
 Encoding: UTF-8
 LazyData: true
+RoxygenNote: 6.1.0
