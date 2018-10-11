@@ -17,3 +17,5 @@ script:
     - R CMD check *tar.gz
    # - Rscript R/test/test*.R
     
+after_failure:
+  - cat /home/travis/build/mbraccio/R-TES/diffeRenTES.Rcheck/00check.log
