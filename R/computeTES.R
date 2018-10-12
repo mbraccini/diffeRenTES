@@ -1,7 +1,3 @@
-library(BoolNet)
-library(DOT)
-library(igraph)
-
 #New string append operator utilizzabile "new" %+% " string" o `%++%`("pippo" ,"pluto")
 `%+%` <- function(a, b) paste0(a, b)
 `%++%` <- function(a, b) paste(a, b, sep=" ")
@@ -108,7 +104,7 @@ evolveUntilAttractor <- function(net, attractors, state, MAX_STEPS_TO_FIND_ATTRA
         if(idx != -1){
             return (idx)
         } else {
-            state <- stateTransition(net, state, type=c("synchronous"))
+            state <- BoolNet::stateTransition(net, state, type=c("synchronous"))
         }
     }
     return (-1)
@@ -163,9 +159,9 @@ computeTESs <- function(ATM){
         #rownames(adjMtrx) <- c("A1","A2","A3","A4","A5")
         #colnames(adjMtrx) <- c("A1","A2","A3","A4","A5")
 
-        ATMgraph <- graph_from_adjacency_matrix(adjMtrx, mode="directed")
+        ATMgraph <- igraph::graph_from_adjacency_matrix(adjMtrx, mode="directed")
         #print(ATMgraph)
-        scc <- clusters(ATMgraph, mode="strong")
+        scc <- igraph::clusters(ATMgraph, mode="strong")
         #plot(ATMgraph)
 
 
@@ -296,7 +292,7 @@ saveDotFileDifferentiationTree <- function(TESs, filename, saveImage=TRUE){
     cat(sString)
     sink()
     if (saveImage){
-        dot(sString, file = filename %+% ".svg")
+        DOT::dot(sString, file = filename %+% ".svg")
     }
 }
  
@@ -305,11 +301,11 @@ main <- function(){
     #fileBN <- "test/self_loop_bn_1_BoolNet.bn"
     fileBN <- "rete.bn"
 
-    net <- loadNetwork(fileBN)
+    net <- BoolNet::loadNetwork(fileBN)
     #net <- generateRandomNKNetwork(20, 2)
     #saveNetwork(net,"rete.bn")
 
-    attractors <- getAttractors(net) 
+    attractors <-  BoolNet::getAttractors(net) 
 
     ATM <- computeATM(net, attractors)
     print(ATM)
