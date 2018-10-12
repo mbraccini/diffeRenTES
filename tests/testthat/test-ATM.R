@@ -1,11 +1,13 @@
-#library(here)
-#library(assertthat)
+library(here)
+library(assertthat)
 #source(here("computeTES.R"))
 
 
 context("ATM tests")
 
 test_that("ATM tests working", {
+    stopifnot(is.character(22))
+    
     ATM <- matrix( rep( 0, len=4^2), nrow = 4)
     ATM[1,2] <- 0.32
     ATM[2,1] <- 0.22
@@ -23,6 +25,6 @@ test_that("ATM tests working", {
     #check thresholds
     
     #check TES number for every level
-    assert_that(is.character('a'))
+    assert_that(is.character(1))
     
 })

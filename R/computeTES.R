@@ -1,4 +1,6 @@
-
+library(BoolNet)
+library(DOT)
+library(igraph)
 
 #New string append operator utilizzabile "new" %+% " string" o `%++%`("pippo" ,"pluto")
 `%+%` <- function(a, b) paste0(a, b)
@@ -37,7 +39,7 @@ getMatricesAttractors <- function(attractors, numGens){
 #' @return List of ATM, lostFlips, and attractors in both decimal and binary format
 #'
 #' @examples
-#' library(BoolNet)
+#' 
 #' net <- generateRandomNKNetwork(10, 2)
 #' attractors <- getAttractors(net) 
 #' computeATM(net, attractors)
@@ -123,8 +125,7 @@ evolveUntilAttractor <- function(net, attractors, state, MAX_STEPS_TO_FIND_ATTRA
 #' @return List of TES, and ATM structure
 #'
 #' @examples
-#' library(BoolNet)
-#' library(igraph)
+#' 
 #' net <- generateRandomNKNetwork(10, 2)
 #' attractors <- getAttractors(net) 
 #' ATM <- computeATM(net, attractors)
@@ -237,9 +238,6 @@ checkUpperlevels <- function(attrs, tesLvl, grandFatherLevel){
 #' @return None
 #'
 #' @examples
-#' library(BoolNet)
-#' library(igraph)
-#' library(DOT)
 #'
 #' net <- generateRandomNKNetwork(10, 2)
 #' attractors <- getAttractors(net) 
