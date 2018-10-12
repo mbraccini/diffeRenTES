@@ -1,6 +1,6 @@
 language: r
 sudo: false
-cache: packages
+#cache: packages
 
 warnings_are_errors: true
 
@@ -8,9 +8,9 @@ install:
     - sudo apt-get install libv8-dev
     #- R -e "install.packages(repos='http://cran.us.r-project.org','BoolNet')"
     #- R -e "install.packages(repos='http://cran.us.r-project.org','igraph')"
-    #- R -e "install.packages(repos='http://cran.us.r-project.org','DOT')"
+    - R -e "install.packages(repos='http://cran.us.r-project.org','DOT')"
     #- R -e "install.packages(repos='http://cran.us.r-project.org','here')"
-    #- R -e "install.packages(repos='http://cran.us.r-project.org','assertthat')"
+    - R -e "install.packages(repos='http://cran.us.r-project.org','assertthat')"
     
 script:
     - R CMD build .
