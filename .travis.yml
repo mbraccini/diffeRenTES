@@ -23,3 +23,4 @@ addons:
     
 after_failure:
   - cat /home/travis/build/mbraccio/R-TES/diffeRenTES.Rcheck/00check.log
+  - cat /home/travis/build/mbraccio/R-TES/man/*.Rd
