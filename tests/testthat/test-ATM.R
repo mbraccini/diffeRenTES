@@ -25,6 +25,6 @@ test_that("ATM tests working", {
     #check thresholds
     
     #check TES number for every level
-    assert_that(is.character('b'))
+    is.character('b')
     
 })
