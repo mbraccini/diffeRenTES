@@ -34,6 +34,9 @@ getMatricesAttractors <- function(attractors, numGens){
 #'
 #' @return List of ATM, lostFlips, and attractors in both decimal and binary format
 #'
+#' @import BoolNet
+#' @import igraph
+#' @import DOT
 #' @examples
 #' 
 #' net <- BoolNet::generateRandomNKNetwork(10, 2)
@@ -104,7 +107,7 @@ evolveUntilAttractor <- function(net, attractors, state, MAX_STEPS_TO_FIND_ATTRA
         if(idx != -1){
             return (idx)
         } else {
-            state <- BoolNet::stateTransition(net, state, type=c("synchronous"))
+            state <- stateTransition(net, state, type=c("synchronous"))
         }
     }
     return (-1)
@@ -159,9 +162,9 @@ computeTESs <- function(ATM){
         #rownames(adjMtrx) <- c("A1","A2","A3","A4","A5")
         #colnames(adjMtrx) <- c("A1","A2","A3","A4","A5")
 
-        ATMgraph <- igraph::graph_from_adjacency_matrix(adjMtrx, mode="directed")
+        ATMgraph <- graph_from_adjacency_matrix(adjMtrx, mode="directed")
         #print(ATMgraph)
-        scc <- igraph::clusters(ATMgraph, mode="strong")
+        scc <- clusters(ATMgraph, mode="strong")
         #plot(ATMgraph)
 
 
@@ -233,6 +236,7 @@ checkUpperlevels <- function(attrs, tesLvl, grandFatherLevel){
 #'
 #' @return None
 #'
+#'
 #' @examples
 #'
 #' net <- BoolNet::generateRandomNKNetwork(10, 2)
@@ -292,7 +296,7 @@ saveDotFileDifferentiationTree <- function(TESs, filename, saveImage=TRUE){
     cat(sString)
     sink()
     if (saveImage){
-        DOT::dot(sString, file = filename %+% ".svg")
+        dot(sString, file = filename %+% ".svg")
     }
 }
  
@@ -301,11 +305,11 @@ main <- function(){
     #fileBN <- "test/self_loop_bn_1_BoolNet.bn"
     fileBN <- "rete.bn"
 
-    net <- BoolNet::loadNetwork(fileBN)
+    net <- loadNetwork(fileBN)
     #net <- generateRandomNKNetwork(20, 2)
     #saveNetwork(net,"rete.bn")
 
-    attractors <-  BoolNet::getAttractors(net) 
+    attractors <-  getAttractors(net) 
 
     ATM <- computeATM(net, attractors)
     print(ATM)

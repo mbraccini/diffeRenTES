@@ -21,6 +21,9 @@ addons:
   #  - R CMD check *tar.gz
    # - Rscript R/test/test*.R
     
+before_script:
+    R -e 'library(devtools);document()'
+    
 after_failure:
   - cat /home/travis/build/mbraccio/R-TES/diffeRenTES.Rcheck/00check.log
   - cat /home/travis/build/mbraccio/R-TES/man/*.Rd
