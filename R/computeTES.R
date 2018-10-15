@@ -36,8 +36,8 @@ getMatricesAttractors <- function(attractors, numGens){
 #'
 #' @examples
 #' 
-#' net <- generateRandomNKNetwork(10, 2)
-#' attractors <- getAttractors(net) 
+#' net <- BoolNet::generateRandomNKNetwork(10, 2)
+#' attractors <- BoolNet::getAttractors(net) 
 #' computeATM(net, attractors)
 #'
 #' @export
@@ -122,8 +122,8 @@ evolveUntilAttractor <- function(net, attractors, state, MAX_STEPS_TO_FIND_ATTRA
 #'
 #' @examples
 #' 
-#' net <- generateRandomNKNetwork(10, 2)
-#' attractors <- getAttractors(net) 
+#' net <- BoolNet::generateRandomNKNetwork(10, 2)
+#' attractors <- BoolNet::getAttractors(net) 
 #' ATM <- computeATM(net, attractors)
 #' computeTESs(ATM) 
 #'
@@ -235,8 +235,8 @@ checkUpperlevels <- function(attrs, tesLvl, grandFatherLevel){
 #'
 #' @examples
 #'
-#' net <- generateRandomNKNetwork(10, 2)
-#' attractors <- getAttractors(net) 
+#' net <- BoolNet::generateRandomNKNetwork(10, 2)
+#' attractors <- BoolNet::getAttractors(net) 
 #' ATM <- computeATM(net, attractors)
 #' TESs <- computeTESs(ATM) 
 #' saveDotFileDifferentiationTree(TESs, "exampleTree")
