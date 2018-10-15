@@ -4,8 +4,8 @@ Date: 2018-10-11
 Title: Landscape and TES computation of BN networks
 Author: Michele Braccini <m.braccini@unibo.it>
 Maintainer: Michele Braccini <m.braccini@unibo.it>
-Description: What the package does (one paragraph).
-Depends: R (>= 3.3.1)
+Description: What the  does (one paragraph).
+Depends: R (>= 3.3)
 Imports: BoolNet, 
         igraph, 
         DOT
