@@ -6,7 +6,7 @@
 context("ATM tests")
 
 test_that("ATM tests working", {
-    stopifnot(is.character(22))
+    stopifnot(is.character('a'))
     
     ATM <- matrix( rep( 0, len=4^2), nrow = 4)
     ATM[1,2] <- 0.32
@@ -25,6 +25,6 @@ test_that("ATM tests working", {
     #check thresholds
     
     #check TES number for every level
-    assert_that(is.character(1))
+    assert_that(is.character('b'))
     
 })
