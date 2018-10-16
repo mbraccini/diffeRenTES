@@ -1,11 +1,9 @@
-theme: jekyll-docs-theme
-
 # name of the software
-name: diffeRenTES
+name: Jekyll Docs Theme
 
 project:
     version: 0.1.0
-    download_url: https://github.com/mbraccio/diffeRenTES/releases
+    download_url: https://github.com/allejo/jekyll-docs-theme/releases
 
 license:
     software: MIT License
@@ -32,7 +30,7 @@ ui:
 
 social:
     github:
-        user: mbraccio
+        user: allejo
         repo: jekyll-docs-theme
     twitter:
         enabled: false
