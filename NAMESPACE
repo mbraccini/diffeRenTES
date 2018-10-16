@@ -3,3 +3,6 @@
 export(computeATM)
 export(computeTESs)
 export(saveDotFileDifferentiationTree)
+import(BoolNet)
+import(DOT)
+import(igraph)
