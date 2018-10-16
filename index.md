@@ -3,7 +3,7 @@ layout: page
 homepage: true
 ---
 
-# What is it?
+# What is it??
 *diffeRenTES* (from French various, different, separate) is a package written in R for calculating TESs (Threshold Ergodic Sets) based differentiation tree starting from Boolean networks.
 
 TESs are the mathematical abstractions with which a powerful model of differentiation represents the different cell types that are generated during a process of differentiation.
