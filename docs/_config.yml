@@ -1,9 +1,9 @@
 # name of the software
-name: Jekyll Docs Theme
+name: diffeRenTES
 
 project:
     version: 0.1.0
-    download_url: https://github.com/allejo/jekyll-docs-theme/releases
+    download_url: https://github.com/mbraccio/diffeRenTES/releases
 
 license:
     software: MIT License
@@ -15,23 +15,23 @@ license:
 links:
     header:
       - title: GitHub
-        url: https://github.com/allejo/jekyll-docs-theme
+        url: https://github.com/mbraccio/diffeRenTES/
     footer:
       - title: GitHub
-        url: https://github.com/allejo/jekyll-docs-theme
+        url: https://github.com/mbraccio/diffeRenTES/
       - title: Issues
-        url: https://github.com/allejo/jekyll-docs-theme/issues?state=open
+        url: https://github.com/mbraccio/diffeRenTES/issues?state=open
 
 ui:
     header:
-        color1: "#080331"
-        color2: "#673051"
+        color1: "#0093FF"
+        color2: "#006004"
         trianglify: true
 
 social:
     github:
-        user: allejo
-        repo: jekyll-docs-theme
+        user: mbraccio
+        repo: diffeRenTES
     twitter:
         enabled: false
         via:
@@ -41,8 +41,8 @@ social:
         enabled: false
         profileUrl:
 
-analytics:
-    google: UA-123456-1
+#analytics:
+ #   google: UA-123456-1
 
 # Build settings
 markdown: kramdown
