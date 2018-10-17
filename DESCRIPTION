@@ -1,0 +1,19 @@
+Package: diffeRenTES
+Version: 0.1
+Date: 2018-10-11
+Title: Landscape and TES computation of BN networks
+Author: Michele Braccini <m.braccini@unibo.it>
+Maintainer: Michele Braccini <m.braccini@unibo.it>
+Description: What the  does (one paragraph).
+Depends: R (>= 3.3)
+Imports: BoolNet, 
+        igraph, 
+        DOT
+Suggests: assertthat,
+    testthat,
+    devtools,
+    roxygen2
+License: GPL-3
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 6.1.0

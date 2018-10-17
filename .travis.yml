@@ -1,0 +1,29 @@
+language: r
+sudo: false
+cache: packages
+
+warnings_are_errors: true
+
+addons:
+  apt:
+    packages:
+      - libv8-dev
+#install:
+ #   - sudo apt-get install libv8-dev
+    #- R -e "install.packages(repos='http://cran.us.r-project.org','BoolNet')"
+    #- R -e "install.packages(repos='http://cran.us.r-project.org','igraph')"
+    #- R -e "install.packages(repos='http://cran.us.r-project.org','DOT')"
+    #- R -e "install.packages(repos='http://cran.us.r-project.org','here')"
+    #- R -e "install.packages(repos='http://cran.us.r-project.org','assertthat')"
+    
+#script:
+ #   - R CMD build .
+  #  - R CMD check *tar.gz
+   # - Rscript R/test/test*.R
+    
+before_script:
+    R -e 'library(devtools);document()'
+    
+after_failure:
+  - cat /home/travis/build/mbraccio/R-TES/diffeRenTES.Rcheck/00check.log
+  - cat /home/travis/build/mbraccio/R-TES/man/*.Rd
