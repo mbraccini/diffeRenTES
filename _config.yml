@@ -3,11 +3,11 @@ name: diffeRenTES
 
 project:
     version: 0.1.0
-    download_url: https://github.com/mbraccio/diffeRenTES/releases
+    download_url: https://github.com/mbraccini/diffeRenTES/releases
 
 license:
-    software: MIT License
-    software_url: http://opensource.org/licenses/MIT
+    software: GPL-3
+    software_url: https://opensource.org/licenses/GPL-3.0
 
     docs: CC BY 3.0
     docs_url: http://creativecommons.org/licenses/by/3.0/
@@ -15,12 +15,12 @@ license:
 links:
     header:
       - title: GitHub
-        url: https://github.com/mbraccio/diffeRenTES/
+        url: https://github.com/mbraccini/diffeRenTES/
     footer:
       - title: GitHub
-        url: https://github.com/mbraccio/diffeRenTES/
+        url: https://github.com/mbraccini/diffeRenTES/
       - title: Issues
-        url: https://github.com/mbraccio/diffeRenTES/issues?state=open
+        url: https://github.com/mbraccini/diffeRenTES/issues?state=open
 
 ui:
     header:
@@ -30,7 +30,7 @@ ui:
 
 social:
     github:
-        user: mbraccio
+        user: mbraccini
         repo: diffeRenTES
     twitter:
         enabled: false
