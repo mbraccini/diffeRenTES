@@ -2,12 +2,12 @@
 % Please edit documentation in R/computeTES.R
 \name{saveDotFileDifferentiationTree}
 \alias{saveDotFileDifferentiationTree}
-\title{Create TES based differentiation tree}
+\title{Save differentiation tree's DOT representation into a file}
 \usage{
-saveDotFileDifferentiationTree(TESs, filename, saveImage = TRUE)
+saveDotFileDifferentiationTree(DOTRep, filename, saveImage = TRUE)
 }
 \arguments{
-\item{TESs}{TES structure as returned from the computeTES() method}
+\item{DOTRep}{Representation of the TES-based differentiation tree compute using \code{\link{getDifferentiationTreeAsDOTString}}}
 
 \item{filename}{desired output filename}
 
@@ -17,14 +17,15 @@ saveDotFileDifferentiationTree(TESs, filename, saveImage = TRUE)
 None
 }
 \description{
-Creates representation of a differentiation tree
+Save differentiation tree's DOT representation into a file usign the specified name
 }
 \examples{
 
 net <- BoolNet::generateRandomNKNetwork(10, 2)
 attractors <- BoolNet::getAttractors(net) 
-ATM <- computeATM(net, attractors)
-TESs <- computeTESs(ATM) 
-saveDotFileDifferentiationTree(TESs, "exampleTree")
+ATM <- getATM(net, attractors)
+TESs <- getTESs(ATM) 
+dotString <- getDifferentiationTreeAsDOTString(TESs)
+saveDotFileDifferentiationTree(dotString, "exampleTree")
 
 }

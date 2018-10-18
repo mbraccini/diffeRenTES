@@ -36,24 +36,19 @@ getMatricesAttractors <- function(attractors, numGens){
 #'
 #' @import BoolNet
 #' @import igraph
-#' @import DOT
 #' @examples
 #' 
 #' net <- BoolNet::generateRandomNKNetwork(10, 2)
 #' attractors <- BoolNet::getAttractors(net) 
-#' computeATM(net, attractors)
+#' getATM(net, attractors)
 #'
 #' @export
-computeATM <- function(net, syncAttractors, MAX_STEPS_TO_FIND_ATTRACTORS = 1000){
-    #net <- loadNetwork(fileBN)
-    #numGenes <- length(net$genes)
-    #attractors <- getAttractors(net) 
+getATM <- function(net, syncAttractors, MAX_STEPS_TO_FIND_ATTRACTORS = 1000){
     initialAttractors <- syncAttractors
     numGenes <- length(syncAttractors$stateInfo$genes)
     numAttractors <- length(syncAttractors$attractors)
     
     attractors <- getMatricesAttractors(syncAttractors,numGenes)
-    print(attractors)
     ATM <- matrix( rep( 0, len=numAttractors^2), nrow = numAttractors)
     #print(attractors[1][[1]][,1])
     
@@ -119,7 +114,7 @@ evolveUntilAttractor <- function(net, attractors, state, MAX_STEPS_TO_FIND_ATTRA
 #' Creates a structure for constructing the TES as described in  A Dynamical Model of Genetic Networks for Cell Differentiation 
 #'Villani M, Barbieri A, Serra R (2011) A Dynamical Model of Genetic Networks for Cell Differentiation. PLOS ONE 6(3): e17703. https://doi.org/10.1371/journal.pone.0017703
 #'
-#' @param ATM ATM structured as returned from the computeATM() method
+#' @param ATM ATM structured as returned from the getATM() method
 #'
 #' @return List of TES, and ATM structure
 #'
@@ -127,18 +122,16 @@ evolveUntilAttractor <- function(net, attractors, state, MAX_STEPS_TO_FIND_ATTRA
 #' 
 #' net <- BoolNet::generateRandomNKNetwork(10, 2)
 #' attractors <- BoolNet::getAttractors(net) 
-#' ATM <- computeATM(net, attractors)
-#' computeTESs(ATM) 
+#' ATM <- getATM(net, attractors)
+#' getTESs(ATM) 
 #'
 #' @export
-computeTESs <- function(ATM){
-    #thresholds <- unique(ATM)
+getTESs <- function(ATM){
     ATMstructure <- ATM
     ATM <- ATM$ATM
     thresholds <- unique(sort(c(ATM)))
-    if (0 %in% thresholds){
-        print("there is already a 0")
-    } else {
+    if (!(0 %in% thresholds)){
+        print("There is no threshold value equal to 0 in the ATM, I will add it for the TESs computation")
         thresholds <- c(0, thresholds)
     }
     tes_i <- 1
@@ -149,23 +142,10 @@ computeTESs <- function(ATM){
         ATM[ATM <= thrs] <- 0
         adjMtrx <- ATM
         adjMtrx[adjMtrx != 0] <- 1
-        #print(ATM)
-        #print(adjMtrx)
-        #adjMtrx <- matrix( rep( 0, len=25), nrow = 5)
-        #adjMtrx[1,1] <- 1
-        #adjMtrx[2,2] <- 1
-        #adjMtrx[2,5] <- 1
-        #adjMtrx[1,2] <- 1
-        #adjMtrx[2,1] <- 1
-        #adjMtrx[3,2] <- 1
-        #adjMtrx[4,3] <- 1
-        #rownames(adjMtrx) <- c("A1","A2","A3","A4","A5")
-        #colnames(adjMtrx) <- c("A1","A2","A3","A4","A5")
+       
 
         ATMgraph <- graph_from_adjacency_matrix(adjMtrx, mode="directed")
-        #print(ATMgraph)
         scc <- clusters(ATMgraph, mode="strong")
-        #plot(ATMgraph)
 
 
         scc_list <- list()
@@ -181,7 +161,6 @@ computeTESs <- function(ATM){
         for(scc in scc_list){
             isTES <- TRUE
             for(elm in scc){
-                #print(scc)
                 out_arcs <- names(which(adjMtrx[elm,] > 0))
                 if (any(!(out_arcs %in% scc))){
                     isTES <- FALSE
@@ -226,32 +205,62 @@ checkUpperlevels <- function(attrs, tesLvl, grandFatherLevel){
 }
 
 
-#' Create TES based differentiation tree 
+#' Save differentiation tree's DOT representation into a file
 #'
-#' Creates representation of a differentiation tree
+#' Save differentiation tree's DOT representation into a file usign the specified name
 #'
-#' @param TESs TES structure as returned from the computeTES() method
+#' @param DOTRep Representation of the TES-based differentiation tree compute using \code{\link{getDifferentiationTreeAsDOTString}} 
 #' @param filename desired output filename
 #' @param saveImage if you want already the .svg image of the tree
 #'
 #' @return None
 #'
+#' @import DOT
 #'
 #' @examples
 #'
 #' net <- BoolNet::generateRandomNKNetwork(10, 2)
 #' attractors <- BoolNet::getAttractors(net) 
-#' ATM <- computeATM(net, attractors)
-#' TESs <- computeTESs(ATM) 
-#' saveDotFileDifferentiationTree(TESs, "exampleTree")
+#' ATM <- getATM(net, attractors)
+#' TESs <- getTESs(ATM) 
+#' dotString <- getDifferentiationTreeAsDOTString(TESs)
+#' saveDotFileDifferentiationTree(dotString, "exampleTree")
 #'
 #' @export
-saveDotFileDifferentiationTree <- function(TESs, filename, saveImage=TRUE){
+saveDotFileDifferentiationTree <- function(DOTRep, filename, saveImage=TRUE){
+    sink(filename %+% ".gv")
+    cat(DOTRep)
+    sink()
+    if (saveImage){
+        dot(DOTRep, file = filename %+% ".svg")
+    }
+}
+
+
+#' Generates a DOT tree-like representation of the TESs
+#'
+#' Generates and returns the representation of the TES-based differentiation tree in the DOT format
+#'
+#' @param TESs TES structure computed with \code{\link{getTESs}} 
+#'
+#' @return String representation
+#'
+#' @import DOT
+#'
+#' @examples
+#'
+#' net <- BoolNet::generateRandomNKNetwork(10, 2)
+#' attractors <- BoolNet::getAttractors(net) 
+#' ATM <- getATM(net, attractors)
+#' TESs <- getTESs(ATM) 
+#' dotString <- getDifferentiationTreeAsDOTString
+#'
+#' @export
+getDifferentiationTreeAsDOTString <- function(TESs){
     tesLvl <- TESs$TES
     namesPerLevel <- function(level){ names(level)}
     TESnames <- lapply(tesLvl, namesPerLevel)
     TESnames <- unlist(TESnames)
-    sink(filename %+% ".gv")
     gString <- "digraph diffTree {forcelabels=true;\n"
     for(lvl in c(1:length(tesLvl))){#per ogni livello
         if (lvl != 1) {#lvl 1=livello 0 dell'albero
@@ -293,42 +302,35 @@ saveDotFileDifferentiationTree <- function(TESs, filename, saveImage=TRUE){
         gString <- gString %+% "{ rank=same;" %+% sameRANK %+% " }\n"
     }
     sString <- gString %+% "}"
-    cat(sString)
-    sink()
-    if (saveImage){
-        dot(sString, file = filename %+% ".svg")
-    }
+    return (sString)
 }
  
- 
+
 main <- function(){
     #fileBN <- "test/self_loop_bn_1_BoolNet.bn"
-    fileBN <- "rete.bn"
-
-    net <- loadNetwork(fileBN)
-    #net <- generateRandomNKNetwork(20, 2)
+    #fileBN <- "rete.bn"
+    #net <- loadNetwork(fileBN)
+    net <- generateRandomNKNetwork(20, 2)
     #saveNetwork(net,"rete.bn")
 
     attractors <-  getAttractors(net) 
 
-    ATM <- computeATM(net, attractors)
+    ATM <- getATM(net, attractors)
     print(ATM)
     print(ATM$attractors$decimal$a2)
     print(ATM$attractors$binary$a2)
 
 
-
     print(ATM$ATM)
 
-    TESs <- computeTESs(ATM)
+    TESs <- getTESs(ATM)
 
     print(TESs)
 
-    print(TESs$TES$"level_2"$"TES_4")
-    saveDotFileDifferentiationTree(TESs, "diffeTREE2")
+    #print(TESs$TES$"level_2"$"TES_4")
+    strg <- getDifferentiationTreeAsDOTString(TESs)
+    print(strg)
+    saveDotFileDifferentiationTree(strg, "diffeTREE2")
 }
 
-#TEST GITHUBßßß
-      
-       
 
