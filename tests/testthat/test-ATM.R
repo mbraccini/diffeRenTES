@@ -1,6 +1,6 @@
-context("ATM tests")
+context("TES tests")
 
-test_that("ATM tests working", {
+test_that("TES tests working", {
         
     ATM <- matrix( rep( 0, len=4^2), nrow = 4)
     ATM[1,2] <- 0.32
@@ -14,7 +14,7 @@ test_that("ATM tests working", {
     colnames(ATM) <- c("a1","a2","a3","a4")
     
     a <- list("ATM"=ATM, "lostFlips"=NULL, "attractors"=NULL)
-    TESs <- computeTESs(a)
+    TESs <- getTESs(a)
     
     expect_equal(TESs$thresholds, c(0,0.22,0.32,0.44))
     
