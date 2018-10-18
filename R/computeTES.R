@@ -136,9 +136,8 @@ computeTESs <- function(ATM){
     ATMstructure <- ATM
     ATM <- ATM$ATM
     thresholds <- unique(sort(c(ATM)))
-    if (0 %in% thresholds){
-        print("there is already a 0")
-    } else {
+    if (!(0 %in% thresholds)){
+        print("There is no threshold value equal to 0 in the ATM, I will add it for the TESs computation")
         thresholds <- c(0, thresholds)
     }
     tes_i <- 1

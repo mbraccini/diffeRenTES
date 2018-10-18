@@ -1,4 +1,4 @@
-#diffeRenTES
+# diffeRenTES
 
 [![Build Status](https://travis-ci.com/mbraccio/diffeRenTES.svg?branch=master)](https://travis-ci.com/mbraccio/diffeRenTES)
 
@@ -8,7 +8,21 @@
 TESs are the mathematical abstractions with which a powerful model of differentiation represents the different cell types arising during ontogenesis.
 The aforementioned model of differentiation based on Boolean networks is firstly described in *"A Dynamical Model of Genetic Networks for Cell Differentiation" Villani M, Barbieri A, Serra R (2011) A Dynamical Model of Genetic Networks for Cell Differentiation. PLOS ONE 6(3): e17703. <https://doi.org/10.1371/journal.pone.0017703>*
 
+# Package installation
+
+This package requires the folowing R libraries:
+
+- BoolNet
+- igraph
+- DOT
+
+```r
+install.packages("diffeRenTES_RELEASE_VERSION.tar.gz", repos = NULL, type="source")
+```
+
+
 # Quick tutorial
+
 ```r
   	net <- BoolNet::generateRandomNKNetwork(10, 2)
 	attractors <- BoolNet::getAttractors(net) 
