@@ -42,3 +42,41 @@ test_that("TES tests working", {
     #assert_that(is.character('b'))
 
 })
+
+
+test_that("test ATM rete self_loop_bn_1_BoolNet.bn", {
+    n <-BoolNet::loadNetwork("self_loop_bn_1_BoolNet.bn")
+    res <- diffeRenTES::getATM(net=n, syncAttractors=getAttractors(n))
+    ATM <- res$ATM
+    expect_equal(ATM[1,1],0.33)
+    expect_equal(ATM[1,2],0.67) 
+    expect_equal(ATM[2,1],0.33) 
+    expect_equal(ATM[2,2],0.67)
+})
+
+
+test_that("test ATM rete self_loop_bn_1_BoolNet.bn", {
+    n <-BoolNet::loadNetwork("attractor_landscape_paper.bn")
+    res <- diffeRenTES::getATM(net=n, syncAttractors=getAttractors(n))
+    ATM <- res$ATM
+    expect_equal(ATM[1,1],0)
+    expect_equal(ATM[1,2],0.75) 
+    expect_equal(ATM[1,3],0.25) 
+    expect_equal(ATM[1,4],0) 
+
+    expect_equal(ATM[2,1],0.25)
+    expect_equal(ATM[2,2],0) 
+    expect_equal(ATM[2,3],0.25) 
+    expect_equal(ATM[2,4],0.5) 
+    
+    expect_equal(ATM[3,1],0)
+    expect_equal(ATM[3,2],0) 
+    expect_equal(ATM[3,3],0.25) 
+    expect_equal(ATM[3,4],0.75) 
+    
+    expect_equal(ATM[4,1],0)
+    expect_equal(ATM[4,2],0.5) 
+    expect_equal(ATM[4,3],0.38) 
+    expect_equal(ATM[4,4],0.12) 
+    
+})
