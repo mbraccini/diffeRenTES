@@ -1,6 +1,10 @@
 # diffeRenTES
-
+<!---
 [![Build Status](https://travis-ci.com/mbraccini/diffeRenTES.svg?branch=master)](https://travis-ci.com/mbraccini/diffeRenTES)
+-->
+
+![example workflow](https://github.com/mbraccini/diffeRenTES/actions/workflows/r.yml/badge.svg)
+
 
 # What is it?
 *diffeRenTES* (from French various, different, separate) is a package written in R for computing, starting from a Boolean network, the ATM (Attractor Transition Matrix) structure and tree-like structures based on the TES (Threshold Ergodic Sets)  concept that describe the process of differentiation.
