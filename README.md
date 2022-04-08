@@ -3,7 +3,7 @@
 [![Build Status](https://travis-ci.com/mbraccini/diffeRenTES.svg?branch=master)](https://travis-ci.com/mbraccini/diffeRenTES)
 -->
 
-![example workflow](https://github.com/mbraccini/diffeRenTES/actions/workflows/r.yml/badge.svg)
+![Build Status GitHub Actions](https://github.com/mbraccini/diffeRenTES/actions/workflows/r.yml/badge.svg)
 
 
 # What is it?
