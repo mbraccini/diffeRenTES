@@ -7,7 +7,7 @@
 saveDotFileDifferentiationTree(DOTRep, filename, saveImage = TRUE)
 }
 \arguments{
-\item{DOTRep}{Representation of the TES-based differentiation tree compute using \code{\link{getDifferentiationTreeAsDOTString}}}
+\item{DOTRep}{Representation of the TES-based differentiation tree computed using \code{\link{getDifferentiationTreeAsDOTString}}}
 
 \item{filename}{The filename of the .gv file}
 
