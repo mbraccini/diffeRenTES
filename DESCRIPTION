@@ -1,10 +1,10 @@
 Package: diffeRenTES
 Version: 0.2.2
 Date: 2022-04-08
-Title: Landscape and TES Computation of BN Networks
+Title: Computation of Attractor Transition Matrix (ATM) and Cell Differentiation Process based on Threshold Ergodic Sets (TESs) of (Synchronous) Boolean Networks
 Author: Michele Braccini <braccini.michele@gmail.com>
 Maintainer: Michele Braccini <braccini.michele@gmail.com>
-Description: diffeRenTES (from French various, different, separate) is a package written in R for computing, starting from a Boolean network, the ATM (Attractor Transition Matrix) structure and tree-like structures based on the TES (Threshold Ergodic Sets) concept that describe the process of differentiation. TESs are the mathematical abstractions with which a powerful model of differentiation represents the different cell types arising during ontogenesis. The aforementioned model of differentiation based on Boolean networks is firstly described in "A Dynamical Model of Genetic Networks for Cell Differentiation" Villani M, Barbieri A, Serra R (2011) A Dynamical Model of Genetic Networks for Cell Differentiation. PLOS ONE 6(3): e17703.
+Description: diffeRenTES (from French various, different) is a package written in R that, starting from the Boolean networks of the *BoolNet* package, computes the ATM (Attractor Transition Matrix) structure and the tree-like structure, based on the TES concept, describing the cell differentiation process. TESs (Threshold Ergodic Sets) are the mathematical abstractions that represent the different cell types arising during ontogenesis. TESs and the powerful model of biological differentiation based on Boolean networks to which it belongs have been firstly described in * "A Dynamical Model of Genetic Networks for Cell Differentiation" Villani M, Barbieri A, Serra R (2011) A Dynamical Model of Genetic Networks for Cell Differentiation. PLOS ONE 6 (3): e17703.
 Depends: R (>= 3.3)
 Imports: BoolNet, 
         igraph, 

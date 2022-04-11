@@ -9,23 +9,25 @@ saveDotFileDifferentiationTree(DOTRep, filename, saveImage = TRUE)
 \arguments{
 \item{DOTRep}{Representation of the TES-based differentiation tree compute using \code{\link{getDifferentiationTreeAsDOTString}}}
 
-\item{filename}{desired output filename}
+\item{filename}{The filename of the .gv file}
 
-\item{saveImage}{if you want already the .svg image of the tree}
+\item{saveImage}{Logical parameter indicating whether \code{saveDotFileDifferentiationTree} have to produce also the image of the tree, in .svg format.}
 }
 \value{
 None
 }
 \description{
-Save differentiation tree's DOT representation into a file usign the specified name
+\code{saveDotFileDifferentiationTree} saves the DOT representation of the derived differentiation tree into a file.
 }
 \examples{
 
+\dontrun{
 net <- BoolNet::generateRandomNKNetwork(10, 2)
 attractors <- BoolNet::getAttractors(net) 
 ATM <- getATM(net, attractors)
 TESs <- getTESs(ATM) 
 dotString <- getDifferentiationTreeAsDOTString(TESs)
 saveDotFileDifferentiationTree(dotString, "exampleTree")
+}	
 
 }

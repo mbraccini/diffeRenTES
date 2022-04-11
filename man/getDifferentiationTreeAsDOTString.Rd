@@ -10,10 +10,11 @@ getDifferentiationTreeAsDOTString(TESs)
 \item{TESs}{TES structure computed with \code{\link{getTESs}}}
 }
 \value{
-String representation
+A string that describe the computed TES-based differentiation tree by using the DOT Language.
 }
 \description{
-Generates and returns the representation of the TES-based differentiation tree in the DOT format
+\code{getDifferentiationTreeAsDOTString} returns the description of the computed TES-based differentiation tree by using the DOT Language.
+The returned DOT description can be passed to the \code{\link{saveDotFileDifferentiationTree}} in order to save it to a file in the local filesystem.
 }
 \examples{
 

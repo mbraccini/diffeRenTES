@@ -7,17 +7,19 @@
 getATM(net, syncAttractors, MAX_STEPS_TO_FIND_ATTRACTORS = 1000)
 }
 \arguments{
-\item{net}{Boolean network loaded with loadNetwork() of BoolNet package}
+\item{net}{The Boolean network previously loaded with loadNetwork() of BoolNet package}
 
-\item{syncAttractors}{synchronous attractors of the network}
+\item{syncAttractors}{Synchronous attractors of the Boolean network}
 
-\item{MAX_STEPS_TO_FIND_ATTRACTORS}{number of steps after that the dynamics after the perturbation gives up}
+\item{MAX_STEPS_TO_FIND_ATTRACTORS}{Number of steps after that the dynamics after the perturbation gives up}
 }
 \value{
-List of ATM, lostFlips, and attractors in both decimal and binary format
+The output will be a named list containing the computed ATM structure, the number of the lost flips (i.e., the number of perturbations that have not reach another attractor within the provided MAX_STEPS_TO_FIND_ATTRACTORS), and lastly the attractors in two formats: the one returned by the BoolNet package (called decimal) and their binary translation (called binary).
 }
 \description{
-Creates a structure for constructing a sort of landscape
+\code{getATM} returns the ATM (Attractor Transistion Matrix) structure. 
+The ATM computes the probability of a transition between the attractors of the Boolean network upon the introduction of noise in the form of a logic negation to each node of each state of each attractor,  checking in which attractor the dynamics relaxes.
+The diagonal of the ATM accounts for attractor robustness, as diagonal values represent the probability of returning to the same attractor after a perturbation.
 }
 \examples{
 
