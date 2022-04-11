@@ -5,7 +5,7 @@
 -->
 
 <!-- badges: start -->
-[![R-CMD-check](https://github.com/mbraccini/diffeRenTES/workflows/R-CMD-check/badge.svg)](https://github.com/mbraccini/diffeRenTES/actions) [![Codecov test coverage](https://codecov.io/gh/mbraccini/diffeRenTES/branch/master/graph/badge.svg)](https://app.codecov.io/gh/mbraccini/diffeRenTES?branch=master)
+[![R-CMD-check](https://github.com/mbraccini/diffeRenTES/workflows/R-CMD-check/badge.svg)](https://github.com/mbraccini/diffeRenTES/actions) [![Codecov test coverage](https://codecov.io/gh/mbraccini/diffeRenTES/branch/master/graph/badge.svg)](https://app.codecov.io/gh/mbraccini/diffeRenTES?branch=master)[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)[![Made with]](https://img.shields.io/badge/Made%20with-♥%20and%20R-%3CCOLOR%3E)
 <!-- badges: end -->
 
 
