@@ -7,14 +7,14 @@
 getTESs(ATM)
 }
 \arguments{
-\item{ATM}{ATM structured as returned from the getATM() method}
+\item{ATM}{ATM structured as returned from the \code{\link{getATM}} method}
 }
 \value{
-List of TES, and ATM structure
+The output will be a named list that contains the list of computed TESs, the noise thresholds at which they emerged and lastly the ATM structure.
 }
 \description{
-Creates a structure for constructing the TES as described in  A Dynamical Model of Genetic Networks for Cell Differentiation 
-Villani M, Barbieri A, Serra R (2011) A Dynamical Model of Genetic Networks for Cell Differentiation. PLOS ONE 6(3): e17703. https://doi.org/10.1371/journal.pone.0017703
+Creates a structure for constructing the TES as described in "A Dynamical Model of Genetic Networks for Cell Differentiation 
+Villani M, Barbieri A, Serra R (2011) A Dynamical Model of Genetic Networks for Cell Differentiation. PLOS ONE 6(3): e17703. https://doi.org/10.1371/journal.pone.0017703"
 }
 \examples{
 
