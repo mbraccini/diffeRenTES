@@ -14,7 +14,7 @@
 
 TESs (Threshold Ergodic Sets) are the mathematical abstractions that represent the different cell types arising during ontogenesis.
 
-TESs and the powerful model of biological differentiation based on Boolean networks to which it belongs have been firstly described in * "A Dynamical Model of Genetic Networks for Cell Differentiation" Villani M, Barbieri A, Serra R (2011) A Dynamical Model of Genetic Networks for Cell Differentiation. PLOS ONE 6 (3): e17703. <https://doi.org/10.1371/journal.pone.0017703> *
+TESs and the powerful model of biological differentiation based on Boolean networks to which it belongs have been firstly described in *"A Dynamical Model of Genetic Networks for Cell Differentiation" Villani M, Barbieri A, Serra R (2011) A Dynamical Model of Genetic Networks for Cell Differentiation. PLOS ONE 6 (3): e17703. <https://doi.org/10.1371/journal.pone.0017703>*
 
 # Package installation
 

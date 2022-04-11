@@ -211,7 +211,7 @@ checkUpperlevels <- function(attrs, tesLvl, grandFatherLevel){
 #'
 #' \code{saveDotFileDifferentiationTree} saves the DOT representation of the derived differentiation tree into a file.
 #'
-#' @param DOTRep Representation of the TES-based differentiation tree compute using \code{\link{getDifferentiationTreeAsDOTString}} 
+#' @param DOTRep Representation of the TES-based differentiation tree computed using \code{\link{getDifferentiationTreeAsDOTString}} 
 #' @param filename The filename of the .gv file
 #' @param saveImage Logical parameter indicating whether \code{saveDotFileDifferentiationTree} have to produce also the image of the tree, in .svg format.
 #'
