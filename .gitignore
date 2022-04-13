@@ -5,3 +5,4 @@ docs
 .Rdata
 .httr-oauth
 .DS_Store
+my_cran_checks.R
