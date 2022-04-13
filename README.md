@@ -18,7 +18,7 @@ TESs and the powerful model of biological differentiation based on Boolean netwo
 
 # Package installation
 
-This package requires the folowing R libraries:
+This package requires the following R libraries:
 
 - BoolNet
 - igraph

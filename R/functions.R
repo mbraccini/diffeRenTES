@@ -24,7 +24,7 @@ get_matrices_attractors <- function(attractors, numGens) {
 
 #' Compute ATM
 #'
-#' \code{getATM} returns the ATM (Attractor Transistion Matrix) structure.
+#' \code{getATM} returns the ATM (Attractor Transition Matrix) structure.
 #' The ATM computes the probability of a transition between the attractors of the Boolean network upon the introduction of noise in the form of a logic negation to each node of each state of each attractor,  checking in which attractor the dynamics relaxes.
 #' The diagonal of the ATM accounts for attractor robustness, as diagonal values represent the probability of returning to the same attractor after a perturbation.
 #'
