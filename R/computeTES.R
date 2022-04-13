@@ -116,7 +116,7 @@ evolveUntilAttractor <- function(net, attractors, state, MAX_STEPS_TO_FIND_ATTRA
 #' Creates a structure for constructing the TES as described in "A Dynamical Model of Genetic Networks for Cell Differentiation 
 #'Villani M, Barbieri A, Serra R (2011) A Dynamical Model of Genetic Networks for Cell Differentiation. PLOS ONE 6(3): e17703. https://doi.org/10.1371/journal.pone.0017703"
 #'
-#' @param ATM ATM structured as returned from the \code{\link{getATM}} method
+#' @param ATM ATM structure as returned from the \code{\link{getATM}} method
 #'
 #' @return The output will be a named list that contains the list of computed TESs, the noise thresholds at which they emerged and lastly the ATM structure.
 #'
@@ -207,11 +207,11 @@ checkUpperlevels <- function(attrs, tesLvl, grandFatherLevel){
 }
 
 
-#' Save differentiation tree's DOT representation into a file
+#' Save the differentiation tree using the DOT syntax and, if needed, produce the related image.
 #'
-#' \code{saveDotFileDifferentiationTree} saves the DOT representation of the derived differentiation tree into a file.
+#' \code{saveDifferentiationTreeToFile} saves the DOT representation of the derived differentiation tree into a file.
 #'
-#' @param DOTRep Representation of the TES-based differentiation tree computed using \code{\link{getDifferentiationTreeAsDOTString}} 
+#' @param TESs TES structure computed with \code{\link{getTESs}}
 #' @param filename The filename of the .gv file
 #' @param saveImage Logical parameter indicating whether \code{saveDotFileDifferentiationTree} have to produce also the image of the tree, in .svg format.
 #'
@@ -226,12 +226,12 @@ checkUpperlevels <- function(attrs, tesLvl, grandFatherLevel){
 #' attractors <- BoolNet::getAttractors(net) 
 #' ATM <- getATM(net, attractors)
 #' TESs <- getTESs(ATM) 
-#' dotString <- getDifferentiationTreeAsDOTString(TESs)
-#' saveDotFileDifferentiationTree(dotString, "exampleTree")
+#' saveDifferentiationTreeToFile(TESs, "exampleTree")
 #' }	
 #'
 #' @export
-saveDotFileDifferentiationTree <- function(DOTRep, filename, saveImage=TRUE){
+saveDifferentiationTreeToFile <- function(TESs, filename, saveImage=TRUE){
+	DOTRep <- getDifferentiationTreeAsDOTString(TESs)
     sink(filename %+% ".gv")
     cat(DOTRep)
     sink()
@@ -241,26 +241,7 @@ saveDotFileDifferentiationTree <- function(DOTRep, filename, saveImage=TRUE){
 }
 
 
-#' Generates a DOT tree-like representation of the TESs
-#'
-#' \code{getDifferentiationTreeAsDOTString} returns the description of the computed TES-based differentiation tree by using the DOT Language.
-#' The returned DOT description can be passed to the \code{\link{saveDotFileDifferentiationTree}} in order to save it to a file in the local filesystem.
-#'
-#' @param TESs TES structure computed with \code{\link{getTESs}} 
-#'
-#' @return A string that describe the computed TES-based differentiation tree by using the DOT Language.
-#'
-#' @import DOT
-#'
-#' @examples
-#'
-#' net <- BoolNet::generateRandomNKNetwork(10, 2)
-#' attractors <- BoolNet::getAttractors(net) 
-#' ATM <- getATM(net, attractors)
-#' TESs <- getTESs(ATM) 
-#' dotString <- getDifferentiationTreeAsDOTString
-#'
-#' @export
+# Generates a DOT tree-like representation of the TESs
 getDifferentiationTreeAsDOTString <- function(TESs){
     tesLvl <- TESs$TES
     namesPerLevel <- function(level){ names(level)}

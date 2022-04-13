@@ -34,7 +34,7 @@ install.packages("diffeRenTES_RELEASE_VERSION.tar.gz", repos = NULL, type="sourc
 ```r
   	net <- BoolNet::generateRandomNKNetwork(10, 2)
 	attractors <- BoolNet::getAttractors(net) 
-	ATM <- computeATM(net, attractors) # attractors transition matrix computation
-	TESs <- computeTESs(ATM) #TESs computation
-	saveDotFileDifferentiationTree(TESs, "exampleTree") #saving the TES-based differentiation tree
+	ATM <- getATM(net, attractors) # attractors transition matrix computation
+	TESs <- getTESs(ATM) #TESs computation
+	saveDifferentiationTreeToFile(TESs, "exampleTree") #saving the TES-based differentiation tree into a file
 ```
