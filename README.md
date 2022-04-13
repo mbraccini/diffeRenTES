@@ -10,7 +10,7 @@
 
 
 # What is it?
-*diffeRenTES* (from French various, different, separate) is a package written in R that, starting from the Boolean networks of the *BoolNet* package, computes the ATM (Attractor Transition Matrix) structure and the tree-like structure, based on the TES concept, describing the cell differentiation process.
+*diffeRenTES* (from French various, different) is a package written in R that, starting from the Boolean networks of the *BoolNet* package, computes the ATM (Attractor Transition Matrix) structure and the tree-like structure, based on the TES concept, describing the cell differentiation process.
 
 TESs (Threshold Ergodic Sets) are the mathematical abstractions that represent the different cell types arising during ontogenesis.
 
