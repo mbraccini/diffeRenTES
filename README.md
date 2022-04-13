@@ -5,12 +5,12 @@
 -->
 
 <!-- badges: start -->
-[![R-CMD-check](https://github.com/mbraccini/diffeRenTES/workflows/R-CMD-check/badge.svg)](https://github.com/mbraccini/diffeRenTES/actions) [![Codecov test coverage](https://codecov.io/gh/mbraccini/diffeRenTES/branch/master/graph/badge.svg)](https://app.codecov.io/gh/mbraccini/diffeRenTES?branch=master)
+[![R-CMD-check](https://github.com/mbraccini/diffeRenTES/workflows/R-CMD-check/badge.svg)](https://github.com/mbraccini/diffeRenTES/actions) [![Codecov test coverage](https://codecov.io/gh/mbraccini/diffeRenTES/branch/master/graph/badge.svg)](https://app.codecov.io/gh/mbraccini/diffeRenTES?branch=master)[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)[![Made with](https://img.shields.io/badge/Made%20with-♥%20and%20R-%3CCOLOR%3E)](https://github.com/mbraccini/diffeRenTES/)
 <!-- badges: end -->
 
 
 # What is it?
-*diffeRenTES* (from French various, different, separate) is a package written in R that, starting from the Boolean networks of the *BoolNet* package, computes the ATM (Attractor Transition Matrix) structure and the tree-like structure, based on the TES concept, describing the cell differentiation process.
+*diffeRenTES* (from French various, different) is a package written in R that, starting from the Boolean networks of the *BoolNet* package, computes the ATM (Attractor Transition Matrix) structure and the tree-like structure, based on the TES concept, describing the cell differentiation process.
 
 TESs (Threshold Ergodic Sets) are the mathematical abstractions that represent the different cell types arising during ontogenesis.
 
