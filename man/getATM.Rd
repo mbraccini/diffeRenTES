@@ -17,7 +17,7 @@ getATM(net, synchronous_attractors, MAX_STEPS_TO_FIND_ATTRACTORS = 1000)
 The output will be a named list containing the computed ATM structure, the number of the lost flips (i.e., the number of perturbations that have not reach another attractor within the provided MAX_STEPS_TO_FIND_ATTRACTORS), and lastly the attractors in two formats: the one returned by the BoolNet package (called decimal) and their binary translation (called binary).
 }
 \description{
-\code{getATM} returns the ATM (Attractor Transistion Matrix) structure.
+\code{getATM} returns the ATM (Attractor Transition Matrix) structure.
 The ATM computes the probability of a transition between the attractors of the Boolean network upon the introduction of noise in the form of a logic negation to each node of each state of each attractor,  checking in which attractor the dynamics relaxes.
 The diagonal of the ATM accounts for attractor robustness, as diagonal values represent the probability of returning to the same attractor after a perturbation.
 }
