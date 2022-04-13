@@ -1,1 +1,0 @@
-#diffeRenTES's static website
