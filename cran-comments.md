@@ -58,7 +58,6 @@ checking for detritus in the temp directory ... NOTE
 Found the following files/directories:
   'lastMiKTeXException'
 
-
 ## devtools::check_win_devel()
 
 1 NOTE:

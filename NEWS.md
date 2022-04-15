@@ -1,6 +1,11 @@
+# diffeRenTES 0.3.1
+
+* Minor bugfixes
+* CRAN submission
+
 # diffeRenTES 0.3.0
 
-* CRAN submission
+* Preparation for CRAN submission
 
 # diffeRenTES 0.2.2
 
