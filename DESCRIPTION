@@ -1,24 +1,40 @@
 Package: diffeRenTES
-Version: 0.2.2
-Date: 2022-04-08
-Title: Computation of Attractor Transition Matrix (ATM) and Threshold Ergodic Set-Based Cell Differentiation Process from (Synchronous) Boolean Networks
+Title: Computation of Attractor Transition Matrix (ATM) and Threshold
+    Ergodic Set-Based Cell Differentiation Process from (Synchronous)
+    Boolean Networks
+Version: 0.3.0
+Date: 2022-04-15
 Author: Michele Braccini <braccini.michele@gmail.com>
 Maintainer: Michele Braccini <braccini.michele@gmail.com>
-Description: Computes the ATM (Attractor Transition Matrix) structure and the tree-like structure describing the cell differentiation process (based on the Threshold Ergodic Set concept introduced by Serra and Villani), starting from the Boolean networks with synchronous updating scheme of the *BoolNet* package. TESs (Threshold Ergodic Sets) are the mathematical abstractions that represent the different cell types arising during ontogenesis. TESs and the powerful model of biological differentiation based on Boolean networks to which it belongs have been firstly described in * "A Dynamical Model of Genetic Networks for Cell Differentiation" Villani M, Barbieri A, Serra R (2011) A Dynamical Model of Genetic Networks for Cell Differentiation. PLOS ONE 6 (3): e17703.
-Depends: R (>= 3.3)
-Imports: BoolNet, 
-        igraph, 
-        DOT
+Description: Computes the ATM (Attractor Transition Matrix) structure and
+    the tree-like structure describing the cell differentiation process
+    (based on the Threshold Ergodic Set concept introduced by Serra and
+    Villani), starting from the Boolean networks with synchronous updating
+    scheme of the BoolNet package. TESs (Threshold Ergodic Sets) are the
+    mathematical abstractions that represent the different cell types
+    arising during ontogenesis. TESs and the powerful model of biological
+    differentiation based on Boolean networks to which it belongs have
+    been firstly described in "A Dynamical Model of Genetic Networks for
+    Cell Differentiation" Villani M, Barbieri A, Serra R (2011) A
+    Dynamical Model of Genetic Networks for Cell Differentiation. PLOS ONE
+    6 (3): e17703.
+License: GPL-3
+Depends: 
+    R (>= 3.3)
+Imports: 
+    BoolNet,
+    DOT,
+    igraph
 Suggests: 
     assertthat,
-    testthat,
+    covr,
     devtools,
-    roxygen2,
     knitr,
     rmarkdown,
-    covr
-License: GPL-3
+    roxygen2,
+    testthat
+VignetteBuilder: 
+    knitr
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 7.1.2
-VignetteBuilder: knitr
