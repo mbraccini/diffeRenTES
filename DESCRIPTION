@@ -2,8 +2,8 @@ Package: diffeRenTES
 Title: Computation of Attractor Transition Matrix (ATM) and Threshold
     Ergodic Set-Based Cell Differentiation Process from (Synchronous)
     Boolean Networks
-Version: 0.2.2
-Date: 2022-04-08
+Version: 0.3.0
+Date: 2022-04-15
 Author: Michele Braccini <braccini.michele@gmail.com>
 Maintainer: Michele Braccini <braccini.michele@gmail.com>
 Description: Computes the ATM (Attractor Transition Matrix) structure and
