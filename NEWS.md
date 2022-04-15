@@ -1,3 +1,7 @@
+# diffeRenTES 0.3.0
+
+* CRAN submission
+
 # diffeRenTES 0.2.2
 
 *  New tests have been added 

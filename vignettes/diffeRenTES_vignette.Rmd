@@ -76,13 +76,13 @@ print(TESs$thresholds)
 
 Lastly, the following code saves the image of the computed differentiation tree to the file system.
 
-```{r,message=FALSE, warning=FALSE,results = "hide"}
+```{r,message=FALSE, warning=FALSE,results = "hide",eval = FALSE}
 # Saving the TES-based differentiation tree into a file
 saveDifferentiationTreeToFile(TESs, "exampleTree") 
 ```
 
-The resulting differentiation tree is presented. It reports the various TESs with the attractors of which they are composed and the differentiation process emerging from the reduction of intracellular noise, synthesised by the thresholds present in the direct arcs.
-![Differentiation Tree](exampleTree.svg)
+The resulting differentiation tree is presented. It reports the various TESs with the attractors of which they are composed and the differentiation process emerging from the reduction of intra-cellular noise, synthesized by the thresholds present in the direct arcs.
+![Differentiation Tree](../man/figures/exampleTree.svg)
 
 ## References
 
