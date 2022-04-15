@@ -257,7 +257,7 @@ get_tree_as_dot_string <- function(TESs) {
       found <- FALSE
       if (lvl != 1) {
         for (fatherTESname in names(tes_lvl[[lvl - 1]])) {
-          if (tes_lvl[[lvl]][[tesNAME]] %in% tes_lvl[[lvl - 1]][[fatherTESname]]) {
+          if (any(tes_lvl[[lvl]][[tesNAME]] %in% tes_lvl[[lvl - 1]][[fatherTESname]])) {
             g_string <- g_string %+% fatherTESname %+% " -> " %+% tesNAME %+% "[label=" %+% TESs$thresholds[[lvl]] %+% "];\n"
             found <- TRUE
           }
