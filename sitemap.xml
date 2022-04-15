@@ -16,10 +16,10 @@
     <loc>/index.html</loc>
   </url>
   <url>
-    <loc>/reference/getATM.html</loc>
+    <loc>/news/index.html</loc>
   </url>
   <url>
-    <loc>/reference/getDifferentiationTreeAsDOTString.html</loc>
+    <loc>/reference/getATM.html</loc>
   </url>
   <url>
     <loc>/reference/getTESs.html</loc>
@@ -28,6 +28,6 @@
     <loc>/reference/index.html</loc>
   </url>
   <url>
-    <loc>/reference/saveDotFileDifferentiationTree.html</loc>
+    <loc>/reference/saveDifferentiationTreeToFile.html</loc>
   </url>
 </urlset>
