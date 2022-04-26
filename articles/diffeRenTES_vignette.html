@@ -28,7 +28,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">diffeRenTES</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.3.1</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.3.2</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -67,7 +67,7 @@
   <main id="main"><div class="page-header">
       <img src="" class="logo" alt=""><h1>Getting started</h1>
             
-            <h4 data-toc-skip class="date">2022-04-22</h4>
+            <h4 data-toc-skip class="date">2022-04-26</h4>
       
       
       <div class="d-none name"><code>diffeRenTES_vignette.Rmd</code></div>
@@ -226,7 +226,7 @@
 <p>Lastly, the following code saves the image of the computed differentiation tree to the file system.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Saving the TES-based differentiation tree into a file</span>
-<span class="fu"><a href="../reference/saveDifferentiationTreeToFile.html">saveDifferentiationTreeToFile</a></span><span class="op">(</span><span class="va">TESs</span>, <span class="st">"exampleTree"</span><span class="op">)</span> </code></pre></div>
+<span class="fu"><a href="../reference/saveDifferentiationTreeToFile.html">saveDifferentiationTreeToFile</a></span><span class="op">(</span><span class="va">TESs</span>, <span class="fu"><a href="https://rdrr.io/r/base/file.path.html" class="external-link">file.path</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempdir</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">"example.svg"</span><span class="op">)</span><span class="op">)</span> </code></pre></div>
 <p>The resulting differentiation tree is presented. It reports the various TESs with the attractors of which they are composed and the differentiation process emerging from the reduction of intra-cellular noise, synthesized by the thresholds present in the direct arcs. <img src="../reference/figures/exampleTree.svg" alt="Differentiation Tree"></p>
 </div>
 <div class="section level2 unnumbered">
@@ -251,7 +251,7 @@
 
 <div class="pkgdown-footer-right">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
 </div>
 
     </footer>

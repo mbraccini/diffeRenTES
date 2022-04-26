@@ -9,36 +9,32 @@
     the tree-like structure describing the cell differentiation process
     (based on the Threshold Ergodic Set concept introduced by Serra and
     Villani), starting from the Boolean networks with synchronous updating
-    scheme of the BoolNet package. TESs (Threshold Ergodic Sets) are the
-    mathematical abstractions that represent the different cell types
+    scheme of the BoolNet R package. TESs (Threshold Ergodic Sets) are
+    the mathematical abstractions that represent the different cell types
     arising during ontogenesis. TESs and the powerful model of biological
     differentiation based on Boolean networks to which it belongs have
     been firstly described in "A Dynamical Model of Genetic Networks for
     Cell Differentiation" Villani M, Barbieri A, Serra R (2011) A
     Dynamical Model of Genetic Networks for Cell Differentiation. PLOS ONE
-    6 (3): e17703.'>
-<title>Computation of Attractor Transition Matrix (ATM) and Threshold
-    Ergodic Set-Based Cell Differentiation Process from (Synchronous)
-    Boolean Networks • diffeRenTES</title>
+    6(3): e17703.'>
+<title>Computation of TES-Based Cell Differentiation Trees • diffeRenTES</title>
 <script src="deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="deps/bootstrap-5.1.0/bootstrap.min.css" rel="stylesheet">
 <script src="deps/bootstrap-5.1.0/bootstrap.bundle.min.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
-<!-- bootstrap-toc --><script src="https://cdn.rawgit.com/afeld/bootstrap-toc/v1.0.1/dist/bootstrap-toc.min.js"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- search --><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- pkgdown --><script src="pkgdown.js"></script><meta property="og:title" content="Computation of Attractor Transition Matrix (ATM) and Threshold
-    Ergodic Set-Based Cell Differentiation Process from (Synchronous)
-    Boolean Networks">
+<!-- bootstrap-toc --><script src="https://cdn.rawgit.com/afeld/bootstrap-toc/v1.0.1/dist/bootstrap-toc.min.js"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- search --><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- pkgdown --><script src="pkgdown.js"></script><meta property="og:title" content="Computation of TES-Based Cell Differentiation Trees">
 <meta property="og:description" content='Computes the ATM (Attractor Transition Matrix) structure and
     the tree-like structure describing the cell differentiation process
     (based on the Threshold Ergodic Set concept introduced by Serra and
     Villani), starting from the Boolean networks with synchronous updating
-    scheme of the BoolNet package. TESs (Threshold Ergodic Sets) are the
-    mathematical abstractions that represent the different cell types
+    scheme of the BoolNet R package. TESs (Threshold Ergodic Sets) are
+    the mathematical abstractions that represent the different cell types
     arising during ontogenesis. TESs and the powerful model of biological
     differentiation based on Boolean networks to which it belongs have
     been firstly described in "A Dynamical Model of Genetic Networks for
     Cell Differentiation" Villani M, Barbieri A, Serra R (2011) A
     Dynamical Model of Genetic Networks for Cell Differentiation. PLOS ONE
-    6 (3): e17703.'>
+    6(3): e17703.'>
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
@@ -52,7 +48,7 @@
     
     <a class="navbar-brand me-2" href="index.html">diffeRenTES</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.3.1</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.3.2</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -91,9 +87,7 @@
 <!---
 [![Build Status](https://travis-ci.com/mbraccini/diffeRenTES.svg?branch=master)](https://travis-ci.com/mbraccini/diffeRenTES)
 ![Build Status GitHub Actions](https://github.com/mbraccini/diffeRenTES/actions/workflows/r.yml/badge.svg)
--->
-<!-- badges: start -->
-
+--><!-- badges: start -->
 </div>
 <div class="section level1">
 <h1 id="what-is-it">What is it?<a class="anchor" aria-label="anchor" href="#what-is-it"></a>
@@ -113,16 +107,29 @@
 </ul>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"diffeRenTES_RELEASE_VERSION.tar.gz"</span>, repos <span class="op">=</span> <span class="cn">NULL</span>, type<span class="op">=</span><span class="st">"source"</span><span class="op">)</span></code></pre></div>
+<p>Or, alternatively, directly from GitHub:</p>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://devtools.r-lib.org/" class="external-link">devtools</a></span><span class="op">)</span>
+<span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://devtools.r-lib.org/reference/remote-reexports.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"mbraccini/diffeRenTES"</span><span class="op">)</span></code></pre></div>
 </div>
 <div class="section level1">
 <h1 id="quick-tutorial">Quick tutorial<a class="anchor" aria-label="anchor" href="#quick-tutorial"></a>
 </h1>
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R">    <span class="va">net</span> <span class="op">&lt;-</span> <span class="fu">BoolNet</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/BoolNet/man/generateRandomNKNetwork.html" class="external-link">generateRandomNKNetwork</a></span><span class="op">(</span><span class="fl">10</span>, <span class="fl">2</span><span class="op">)</span>
-    <span class="va">attractors</span> <span class="op">&lt;-</span> <span class="fu">BoolNet</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/BoolNet/man/getAttractors.html" class="external-link">getAttractors</a></span><span class="op">(</span><span class="va">net</span><span class="op">)</span> 
-    <span class="va">ATM</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/getATM.html">getATM</a></span><span class="op">(</span><span class="va">net</span>, <span class="va">attractors</span><span class="op">)</span> <span class="co"># attractors transition matrix computation</span>
-    <span class="va">TESs</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/getTESs.html">getTESs</a></span><span class="op">(</span><span class="va">ATM</span><span class="op">)</span> <span class="co">#TESs computation</span>
-    <span class="fu"><a href="reference/saveDifferentiationTreeToFile.html">saveDifferentiationTreeToFile</a></span><span class="op">(</span><span class="va">TESs</span>, <span class="st">"exampleTree"</span><span class="op">)</span> <span class="co">#saving the TES-based differentiation tree into a file</span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co">#Boolean network generation by means of 'BoolNet' package</span>
+<span class="va">net</span> <span class="op">&lt;-</span> <span class="fu">BoolNet</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/BoolNet/man/generateRandomNKNetwork.html" class="external-link">generateRandomNKNetwork</a></span><span class="op">(</span><span class="fl">10</span>, <span class="fl">2</span><span class="op">)</span>
+
+<span class="co">#Attractors computation</span>
+<span class="va">attractors</span> <span class="op">&lt;-</span> <span class="fu">BoolNet</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/BoolNet/man/getAttractors.html" class="external-link">getAttractors</a></span><span class="op">(</span><span class="va">net</span><span class="op">)</span> 
+
+<span class="co">#Attractors Transition Matrix computation</span>
+<span class="va">ATM</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/getATM.html">getATM</a></span><span class="op">(</span><span class="va">net</span>, <span class="va">attractors</span><span class="op">)</span>
+
+<span class="co">#TESs computation</span>
+<span class="va">TESs</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/getTESs.html">getTESs</a></span><span class="op">(</span><span class="va">ATM</span><span class="op">)</span>
+
+<span class="co">#Saving the image of the TES-based differentiation tree</span>
+<span class="fu"><a href="reference/saveDifferentiationTreeToFile.html">saveDifferentiationTreeToFile</a></span><span class="op">(</span><span class="va">TESs</span>, <span class="st">"example.svg"</span><span class="op">)</span> </code></pre></div>
 </div>
 
   </main><aside class="col-md-3"><div class="license">
@@ -168,7 +175,7 @@
 
 <div class="pkgdown-footer-right">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
 </div>
 
     </footer>
