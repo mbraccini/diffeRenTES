@@ -74,16 +74,15 @@ Villani M, Barbieri A, Serra R (2011) A Dynamical Model of Genetic Networks for 
 <span class="r-in"><span class="va">attractors</span> <span class="op">&lt;-</span> <span class="fu">BoolNet</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/BoolNet/man/getAttractors.html" class="external-link">getAttractors</a></span><span class="op">(</span><span class="va">net</span><span class="op">)</span></span>
 <span class="r-in"><span class="va">ATM</span> <span class="op">&lt;-</span> <span class="fu"><a href="getATM.html">getATM</a></span><span class="op">(</span><span class="va">net</span>, <span class="va">attractors</span><span class="op">)</span></span>
 <span class="r-in"><span class="fu">getTESs</span><span class="op">(</span><span class="va">ATM</span><span class="op">)</span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> In the ATM there is no threshold value equal to 0, it will be added for the calculation of TESs</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $TES</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $TES$level_0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $TES$level_0$TES_1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "a1" "a2"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "a1" "a2" "a3"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $TES$level_1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $TES$level_1$TES_2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "a2"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "a1" "a2"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $TES$level_2</span>
@@ -101,24 +100,60 @@ Villani M, Barbieri A, Serra R (2011) A Dynamical Model of Genetic Networks for 
 <span class="r-out co"><span class="r-pr">#&gt;</span> $TES$level_3$TES_6</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "a2"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $TES$level_3$TES_7</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "a3"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $TES$level_4</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $TES$level_4$TES_7</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $TES$level_4$TES_8</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "a1"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $TES$level_4$TES_8</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $TES$level_4$TES_9</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "a2"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $TES$level_4$TES_10</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "a3"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $TES$level_5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $TES$level_5$TES_11</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "a1"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $TES$level_5$TES_12</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "a2"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $TES$level_5$TES_13</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "a3"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $TES$level_5$TES_14</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "a4"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $TES$level_6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $TES$level_6$TES_15</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "a1"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $TES$level_6$TES_16</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "a2"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $TES$level_6$TES_17</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "a3"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $TES$level_6$TES_18</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "a4"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $thresholds</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0.00 0.24 0.35 0.65 0.76</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0.0 0.1 0.2 0.3 0.5 0.7 0.8</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $ATM</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $ATM$ATM</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      a1   a2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> a1 0.65 0.35</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> a2 0.24 0.76</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     a1  a2  a3  a4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> a1 0.7 0.2 0.1 0.0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> a2 0.2 0.8 0.0 0.0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> a3 0.3 0.2 0.5 0.0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> a4 0.0 0.7 0.0 0.3</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $ATM$lostFLips</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0</span>
@@ -127,49 +162,93 @@ Villani M, Barbieri A, Serra R (2011) A Dynamical Model of Genetic Networks for 
 <span class="r-out co"><span class="r-pr">#&gt;</span> $ATM$attractors$decimal</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $ATM$attractors$decimal$a1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $ATM$attractors$decimal$a1$involvedStates</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      [,1] [,2]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1,]  448  704</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      [,1]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1,]  206</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $ATM$attractors$decimal$a1$basinSize</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 160</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 388</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $ATM$attractors$decimal$a2</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $ATM$attractors$decimal$a2$involvedStates</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      [,1] [,2] [,3] [,4] [,5]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1,]  224  385  968  720  452</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      [,1]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1,]  283</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $ATM$attractors$decimal$a2$basinSize</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 864</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 608</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ATM$attractors$decimal$a3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ATM$attractors$decimal$a3$involvedStates</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      [,1]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1,]  110</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ATM$attractors$decimal$a3$basinSize</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 20</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ATM$attractors$decimal$a4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ATM$attractors$decimal$a4$involvedStates</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      [,1]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1,]  791</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ATM$attractors$decimal$a4$basinSize</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 8</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $ATM$attractors$binary</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $ATM$attractors$binary$a1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        [,1] [,2]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Gene1     0    0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Gene2     0    0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Gene3     0    0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Gene4     0    0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Gene5     0    0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Gene6     0    0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Gene7     1    1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Gene8     1    1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Gene9     1    0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Gene10    0    1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        [,1]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Gene1     0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Gene2     1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Gene3     1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Gene4     1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Gene5     0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Gene6     0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Gene7     1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Gene8     1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Gene9     0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Gene10    0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $ATM$attractors$binary$a2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        [,1] [,2] [,3] [,4] [,5]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Gene1     0    1    0    0    0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Gene2     0    0    0    0    0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Gene3     0    0    0    0    1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Gene4     0    0    1    0    0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Gene5     0    0    0    1    0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Gene6     1    0    0    0    0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Gene7     1    0    1    1    1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Gene8     1    1    1    1    1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Gene9     0    1    1    0    1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Gene10    0    0    1    1    0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        [,1]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Gene1     1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Gene2     1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Gene3     0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Gene4     1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Gene5     1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Gene6     0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Gene7     0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Gene8     0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Gene9     1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Gene10    0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ATM$attractors$binary$a3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        [,1]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Gene1     0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Gene2     1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Gene3     1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Gene4     1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Gene5     0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Gene6     1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Gene7     1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Gene8     0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Gene9     0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Gene10    0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ATM$attractors$binary$a4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        [,1]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Gene1     1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Gene2     1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Gene3     1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Gene4     0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Gene5     1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Gene6     0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Gene7     0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Gene8     0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Gene9     1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Gene10    1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
