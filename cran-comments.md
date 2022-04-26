@@ -77,3 +77,24 @@ Found the following files/directories:
 Maintainer: 'Michele Braccini <braccini.michele@gmail.com>'
 New submission
 
+
+## devtools::check_win_release()
+## devtools::check_win_devel()
+## devtools::check_win_oldrelease()
+
+1 NOTE:
+- checking CRAN incoming feasibility ... NOTE
+Maintainer: 'Michele Braccini <braccini.michele@gmail.com>'
+
+New submission
+
+Possibly misspelled words in DESCRIPTION:
+  Attractor (7:32)
+  Barbieri (16:38)
+  Ergodic (9:29, 11:56)
+  PLOS (17:67)
+  TES (2:23)
+  TESs (11:40, 13:33)
+  Villani (10:5, 16:27)
+  ontogenesis (13:20)
+
