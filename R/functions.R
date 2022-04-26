@@ -110,7 +110,7 @@ evolve_until_attractor <- function(net, attractors, state, MAX_STEPS_TO_FIND_ATT
 #' Creates a structure for constructing the TES as described in "A Dynamical Model of Genetic Networks for Cell Differentiation
 #' Villani M, Barbieri A, Serra R (2011) A Dynamical Model of Genetic Networks for Cell Differentiation. PLOS ONE 6(3): e17703. https://doi.org/10.1371/journal.pone.0017703"
 #'
-#' @param ATM ATM structure as returned from the \code{\link{getATM}} method
+#' @param ATM ATM structure as returned from the \code{\link{getATM}} method.
 #'
 #' @return The output will be a named list that contains the list of computed TESs, the noise thresholds at which they emerged and lastly the ATM structure.
 #'
@@ -129,7 +129,7 @@ getTESs <- function(ATM) {
   ATM <- ATM$ATM
   thresholds <- unique(sort(c(ATM)))
   if (!(0 %in% thresholds)) {
-    print("There is no threshold value equal to 0 in the ATM, I will add it for the TESs computation")
+    message("In the ATM there is no threshold value equal to 0, it will be added for the calculation of TESs")
     thresholds <- c(0, thresholds)
   }
   tes_i <- 1
@@ -202,36 +202,36 @@ check_upperlevels <- function(attrs, tes_lvl, grand_father_level) {
 }
 
 
-#' Save the differentiation tree using the DOT syntax and, if needed, produce the related image.
+#' Save the graphic representation of the differentiation tree.
 #'
-#' \code{saveDifferentiationTreeToFile} saves the DOT representation of the derived differentiation tree into a file.
+#' \code{saveDifferentiationTreeToFile} saves the image of the computed differentiation tree into a file.
 #'
-#' @param TESs TES structure computed with \code{\link{getTESs}}
-#' @param filename The filename of the .gv file
-#' @param save_image Logical parameter indicating whether \code{saveDotFileDifferentiationTree} have to produce also the image of the tree, in .svg format.
+#' @param TESs TES structure computed with \code{\link{getTESs}}.
+#' @param filename Defines the filename for exporting the image of the differentiation tree. The only file extension accepted is "svg", filenames omitting the extensions and those with other extensions will be forced to SVG format.
 #'
 #' @return None
 #'
 #' @importFrom DOT dot
+#' @importFrom tools file_path_sans_ext
 #'
 #' @examples
-#' \dontrun{
+#' 
 #' net <- BoolNet::generateRandomNKNetwork(10, 2)
 #' attractors <- BoolNet::getAttractors(net)
 #' ATM <- getATM(net, attractors)
 #' TESs <- getTESs(ATM)
-#' saveDifferentiationTreeToFile(TESs, "exampleTree")
-#' }
+#' saveDifferentiationTreeToFile(TESs, tempfile(tmpdir = tempdir(), fileext = ".svg"))
 #'
 #' @export
-saveDifferentiationTreeToFile <- function(TESs, filename, save_image = TRUE) {
+saveDifferentiationTreeToFile <- function(TESs, filename) {
   dot_rep <- get_tree_as_dot_string(TESs)
-  sink(filename %+% ".gv")
-  cat(dot_rep)
-  sink()
-  if (save_image) {
-    dot(dot_rep, file = filename %+% ".svg")
+  file <- filename
+  if (!grepl("\\.svg$", file)) {
+    file <- tools::file_path_sans_ext(file)
+    file <- file %+% ".svg"
   }
+  temp <- dot(dot_rep, return="verbatim")
+  write(temp, file)
 }
 
 get_tree_as_dot_string <- function(TESs) {

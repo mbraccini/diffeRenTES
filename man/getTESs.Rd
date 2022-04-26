@@ -7,7 +7,7 @@
 getTESs(ATM)
 }
 \arguments{
-\item{ATM}{ATM structure as returned from the \code{\link{getATM}} method}
+\item{ATM}{ATM structure as returned from the \code{\link{getATM}} method.}
 }
 \value{
 The output will be a named list that contains the list of computed TESs, the noise thresholds at which they emerged and lastly the ATM structure.
