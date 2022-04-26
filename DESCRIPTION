@@ -22,14 +22,11 @@ Depends:
 Imports: 
     BoolNet,
     DOT,
-    igraph
+    igraph,
+    tools
 Suggests: 
-    assertthat,
-    covr,
-    devtools,
     knitr,
     rmarkdown,
-    roxygen2,
     testthat
 VignetteBuilder: 
     knitr
