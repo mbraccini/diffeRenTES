@@ -2,30 +2,27 @@
 % Please edit documentation in R/functions.R
 \name{saveDifferentiationTreeToFile}
 \alias{saveDifferentiationTreeToFile}
-\title{Save the differentiation tree using the DOT syntax and, if needed, produce the related image.}
+\title{Save the graphic representation of the differentiation tree.}
 \usage{
-saveDifferentiationTreeToFile(TESs, filename, save_image = TRUE)
+saveDifferentiationTreeToFile(TESs, filename)
 }
 \arguments{
-\item{TESs}{TES structure computed with \code{\link{getTESs}}}
+\item{TESs}{TES structure computed with \code{\link{getTESs}}.}
 
-\item{filename}{The filename of the .gv file}
-
-\item{save_image}{Logical parameter indicating whether \code{saveDotFileDifferentiationTree} have to produce also the image of the tree, in .svg format.}
+\item{filename}{Defines the filename for exporting the image of the differentiation tree. The only file extension accepted is "svg", filenames omitting the extensions and those with other extensions will be forced to SVG format.}
 }
 \value{
 None
 }
 \description{
-\code{saveDifferentiationTreeToFile} saves the DOT representation of the derived differentiation tree into a file.
+\code{saveDifferentiationTreeToFile} saves the image of the computed differentiation tree into a file.
 }
 \examples{
-\dontrun{
+
 net <- BoolNet::generateRandomNKNetwork(10, 2)
 attractors <- BoolNet::getAttractors(net)
 ATM <- getATM(net, attractors)
 TESs <- getTESs(ATM)
-saveDifferentiationTreeToFile(TESs, "exampleTree")
-}
+saveDifferentiationTreeToFile(TESs, tempfile(tmpdir = tempdir(), fileext = ".svg"))
 
 }

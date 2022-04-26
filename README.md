@@ -27,14 +27,28 @@ This package requires the following R libraries:
 ```r
 install.packages("diffeRenTES_RELEASE_VERSION.tar.gz", repos = NULL, type="source")
 ```
+Or, alternatively, directly from GitHub:
 
+```r
+library(devtools)
+devtools::install_github("mbraccini/diffeRenTES")
+```
 
 # Quick tutorial
 
 ```r
-  	net <- BoolNet::generateRandomNKNetwork(10, 2)
-	attractors <- BoolNet::getAttractors(net) 
-	ATM <- getATM(net, attractors) # attractors transition matrix computation
-	TESs <- getTESs(ATM) #TESs computation
-	saveDifferentiationTreeToFile(TESs, "exampleTree") #saving the TES-based differentiation tree into a file
+#Boolean network generation by means of 'BoolNet' package
+net <- BoolNet::generateRandomNKNetwork(10, 2)
+
+#Attractors computation
+attractors <- BoolNet::getAttractors(net) 
+
+#Attractors Transition Matrix computation
+ATM <- getATM(net, attractors)
+
+#TESs computation
+TESs <- getTESs(ATM)
+
+#Saving the image of the TES-based differentiation tree
+saveDifferentiationTreeToFile(TESs, "example.svg") 
 ```
