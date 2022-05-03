@@ -7,7 +7,7 @@
 <!-- badges: start -->
 [![R-CMD-check](https://github.com/mbraccini/diffeRenTES/workflows/R-CMD-check/badge.svg)](https://github.com/mbraccini/diffeRenTES/actions) [![Codecov test coverage](https://codecov.io/gh/mbraccini/diffeRenTES/branch/master/graph/badge.svg)](https://app.codecov.io/gh/mbraccini/diffeRenTES?branch=master)[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 [![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)[![Made with](https://img.shields.io/badge/Made%20with-♥%20and%20R-%3CCOLOR%3E)](https://github.com/mbraccini/diffeRenTES/)
-[![CRAN\_Status\_Badge](https://www.r-pkg.org/badges/version/diffeRenTES)](https://cran.r-project.org/package=overviewR)[![downloads](https://cranlogs.r-pkg.org/badges/grand-total/diffeRenTES)](https://cranlogs.r-pkg.org/badges/grand-total/diffeRenTES)
+[![CRAN\_Status\_Badge](https://www.r-pkg.org/badges/version/diffeRenTES)](https://cran.r-project.org/package=diffeRenTES)[![downloads](https://cranlogs.r-pkg.org/badges/grand-total/diffeRenTES)](https://cranlogs.r-pkg.org/badges/grand-total/diffeRenTES)
 <!-- badges: end -->
 
 
