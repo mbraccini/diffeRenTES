@@ -1,6 +1,6 @@
 Package: diffeRenTES
 Title: Computation of TES-Based Cell Differentiation Trees
-Version: 0.3.2
+Version: 0.3.2.9000
 Date: 2022-04-26
 Author: Michele Braccini <braccini.michele@gmail.com>
 Maintainer: Michele Braccini <braccini.michele@gmail.com>
