@@ -81,10 +81,9 @@ The diagonal of the ATM accounts for attractor robustness, as diagonal values re
 <span class="r-in"><span class="va">attractors</span> <span class="op">&lt;-</span> <span class="fu">BoolNet</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/BoolNet/man/getAttractors.html" class="external-link">getAttractors</a></span><span class="op">(</span><span class="va">net</span><span class="op">)</span></span>
 <span class="r-in"><span class="fu">getATM</span><span class="op">(</span><span class="va">net</span>, <span class="va">attractors</span><span class="op">)</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $ATM</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      a1   a2   a3</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> a1 0.60 0.20 0.20</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> a2 0.30 0.50 0.20</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> a3 0.26 0.17 0.57</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      a1   a2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> a1 1.00 0.00</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> a2 0.53 0.47</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $lostFLips</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0</span>
@@ -94,36 +93,27 @@ The diagonal of the ATM accounts for attractor robustness, as diagonal values re
 <span class="r-out co"><span class="r-pr">#&gt;</span> $attractors$decimal$a1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $attractors$decimal$a1$involvedStates</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>      [,1]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1,]   32</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1,]   35</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $attractors$decimal$a1$basinSize</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 420</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 912</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $attractors$decimal$a2</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $attractors$decimal$a2$involvedStates</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>      [,1] [,2] [,3]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1,]    2  549  160</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1,]   37  386  227</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $attractors$decimal$a2$basinSize</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 318</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $attractors$decimal$a3</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $attractors$decimal$a3$involvedStates</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8] [,9] [,10]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1,]    4  181   99  800   40   36  176   67  805   168</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $attractors$decimal$a3$basinSize</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 286</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 112</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $attractors$binary</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $attractors$binary$a1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>        [,1]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Gene1     0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Gene2     0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Gene1     1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Gene2     1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Gene3     0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Gene4     0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Gene5     0</span>
@@ -135,29 +125,16 @@ The diagonal of the ATM accounts for attractor robustness, as diagonal values re
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $attractors$binary$a2</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>        [,1] [,2] [,3]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Gene1     0    1    0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Gene2     1    0    0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Gene3     0    1    0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Gene1     1    0    1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Gene2     0    1    1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Gene3     1    0    0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Gene4     0    0    0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Gene5     0    0    0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Gene6     0    1    1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Gene7     0    0    0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Gene8     0    0    1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Gene9     0    0    0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Gene10    0    1    0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $attractors$binary$a3</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8] [,9] [,10]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Gene1     0    1    1    0    0    0    0    1    1     0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Gene2     0    0    1    0    0    0    0    1    0     0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Gene3     1    1    0    0    0    1    0    0    1     0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Gene4     0    0    0    0    1    0    0    0    0     1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Gene5     0    1    0    0    0    0    1    0    0     0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Gene6     0    1    1    1    1    1    1    0    1     1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Gene7     0    0    1    0    0    0    0    1    0     0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Gene8     0    1    0    0    0    0    1    0    0     1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Gene9     0    0    0    1    0    0    0    0    1     0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Gene10    0    0    0    1    0    0    0    0    1     0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Gene6     1    0    1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Gene7     0    0    1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Gene8     0    1    1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Gene9     0    1    0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Gene10    0    0    0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
